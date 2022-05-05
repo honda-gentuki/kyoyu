@@ -1,12 +1,11 @@
 <main class="main">
   <div class="inner">
     <div class="greeting">
+    
       <%= "こんにちは" %>
-      <%
-=begin%>
- <%= link_to @user.nickname, root_path, class: :greeting__link %> 
-<%
-=end%>
+      <% if user_signed_in? %>
+        <%= link_to @user.nickname, root_path, class: :greeting__link %>
+      <% end%> 
     </div>
   <div class="card__wrapper">
       <%# 投稿機能実装後、部分テンプレートで投稿一覧を表示する %>
