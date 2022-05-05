@@ -4,7 +4,7 @@
     
       <%= "こんにちは" %>
       <% if user_signed_in? %>
-        <%= link_to @user.nickname, root_path, class: :greeting__link %>
+        <%= link_to "#{current_user.nickname}先生", root_path, class: :greeting__link %>
       <% end%> 
     </div>
   <div class="card__wrapper">
