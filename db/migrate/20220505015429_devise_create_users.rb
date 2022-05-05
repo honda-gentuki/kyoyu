@@ -14,6 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :age,                null: false
       t.string :school,             null: false
       t.string :subject,            null: false
+      t.string :club,               null: false
       t.text   :a_word,             null: false
 
       ## Recoverable

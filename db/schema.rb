@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_05_05_015429) do
     t.string "age", null: false
     t.string "school", null: false
     t.string "subject", null: false
+    t.string "club", null: false
     t.text "a_word", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
