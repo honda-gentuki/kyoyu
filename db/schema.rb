@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 2022_05_05_015429) do
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
-    t.string "age", null: false
-    t.string "school", null: false
-    t.string "subject", null: false
-    t.string "club", null: false
-    t.text "a_word", null: false
+    t.string "age"
+    t.string "school"
+    t.string "subject"
+    t.string "club"
+    t.text "a_word"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

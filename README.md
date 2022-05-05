@@ -11,11 +11,11 @@
 | last_name          | string | null: false               |
 | first_name_kana    | string | null: false               |
 | last_name_kana     | string | null: false               |
-| age                | string | null: false               |
-| school             | string | null: false               |
-| subject            | string | null: false               |
-| club               | string | null: false               |
-| a_word             | text   | null: false               |
+| age                | string |                           |
+| school             | string |                           |
+| subject            | string |                           |
+| club               | string |                           |
+| a_word             | text   |                           |
 
 
 ### Association
