@@ -32,11 +32,10 @@
 | unit               | string     | null: false                    |
 | introduction       | string     | null: false                    |
 | introduction_time  | integer    | null: false                    |
-| development        | string     | null: false                    |
+| development        | text       | null: false                    |
 | development_time   | integer    | null: false                    |
 | summary            | string     | null: false                    |
 | summary_time       | integer    | null: false                    |
-| teaching_materials | string     | null: false                    |
 | teaching_materials | string     | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
