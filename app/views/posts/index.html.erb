@@ -1,10 +1,10 @@
 <main class="main">
   <div class="inner">
     <div class="greeting">
-    
-      <%= "こんにちは" %>
       <% if user_signed_in? %>
-        <%= link_to "#{current_user.nickname}先生", root_path, class: :greeting__link %>
+        <%= "こんにちは" %>
+        <%= link_to "#{current_user.nickname}", root_path, class: :greeting__link %>
+        先生
       <% end%> 
     </div>
   <div class="card__wrapper">

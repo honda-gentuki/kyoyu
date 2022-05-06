@@ -6,9 +6,9 @@ FactoryBot.define do
     teaching_materials { '山川出版社日本史B' }
     introduction       { 'テストテストテストテストテストテスト' }
     introduction_time  { 5 }
-    development        { 'テストテストテストテストテストテスト'  }
-    development_time   { 35 } 
-    summary            { 'テストテストテストテストテストテスト'  }
+    development        { 'テストテストテストテストテストテスト' }
+    development_time   { 35 }
+    summary            { 'テストテストテストテストテストテスト' }
     summary_time       { 10 }
 
     association :user
