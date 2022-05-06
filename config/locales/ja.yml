@@ -10,6 +10,17 @@ ja:
         last_name: 姓
         first_name_kana: メイ
         last_name_kana: セイ
+      post:
+        subject: 教科名
+        course: 科目名
+        unit: 単元名
+        teaching_materials: 教材名
+        introduction: 導入
+        introduction_time: 導入の時間
+        development: 展開
+        development_time: 展開の時間
+        summary: まとめ
+        summary_time: まとめの時間
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
