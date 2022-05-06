@@ -9,11 +9,9 @@ class Post < ApplicationRecord
     validates :teaching_materials
   end
 
-  with_options presence: true do
-    validates :introduction, length: { maximum: 300 }
-    validates :development,  length: { maximum: 1000 }
-    validates :summary,      length: { maximum: 300 }
-  end
+  validates :introduction, length: { maximum: 300 }
+  validates :development,  length: { maximum: 1000 }
+  validates :summary,      length: { maximum: 300 }
 
   with_options numericality: { only_integer: true } do
     validates :introduction_time
