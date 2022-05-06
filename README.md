@@ -30,14 +30,13 @@
 | subject            | string     | null: false                    |
 | course             | string     | null: false                    |
 | unit               | string     | null: false                    |
-| introduction       | string     | null: false                    |
-| introduction_time  | integer    | null: false                    |
-| development        | string     | null: false                    |
-| development_time   | integer    | null: false                    |
-| summary            | string     | null: false                    |
-| summary_time       | integer    | null: false                    |
 | teaching_materials | string     | null: false                    |
-| teaching_materials | string     | null: false                    |
+| introduction       | text       |                                |
+| introduction_time  | integer    |                                |
+| development        | text       |                                |
+| development_time   | integer    |                                |
+| summary            | text       |                                |
+| summary_time       | integer    |                                |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
