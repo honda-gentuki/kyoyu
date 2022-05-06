@@ -1,0 +1,55 @@
+<%= form_with model: @post, local: true do |f|%>
+  <div class="field">
+    <%= f.label :subject, "教科名" %><br />
+    <%= f.text_field :subject, id:"post_subject" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :course, "科目名" %><br />
+    <%= f.text_field :course, id:"post_course" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :unit, "単元名" %><br />
+    <%= f.text_field :unit, id:"post_unit" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduction, "導入" %><br />
+    <%= f.text_area :introduction, class: :form__text, id:"post_introduction" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :post_introduction_time, id:"post_introduction_time" %>
+    分
+  </div>
+
+  <div class="field">
+    <%= f.label :development, "展開" %><br />
+    <%= f.text_area :development, class: :form__text, id:"post_development" %>
+  </div>
+
+    <div class="field">
+    <%= f.text_field :development_time, id:"post_development_time" %>
+    分
+  </div>
+
+  <div class="field">
+    <%= f.label :summary, "まとめ" %><br />
+    <%= f.text_area :summary, class: :form__text, id:"post_summary" %>
+  </div>
+
+    <div class="field">
+    <%= f.text_field :summary_time, id:"post_summary_time" %>
+    分
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "板書案・スライドなど" %><br />
+    <%= f.file_field :image, id:"prototype_image" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "投稿する", class: :form__btn  %>
+  </div>
+<% end %>
