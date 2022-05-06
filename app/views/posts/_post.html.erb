@@ -1,10 +1,10 @@
 <div class="card">
   <div class="card__body">
-    <%= link_to post.unit, post_path(post.id), class: :card__title%>
+    <%= link_to post.unit, root_path, class: :card__title%>
     <p class="card__summary">
       <%= post.course %>
     </p>
-    <%= link_to image_tag(post.image.variant(resize: '300x300'), class: :card__img ), post_path(post.id) if post.image.attached?%>
+    <%= link_to image_tag(post.image.variant(resize: '300x300'), class: :card__img ), root_path if post.image.attached?%>
     <i class="bi bi-heart"></i>
     <i class="bi bi-chat-dots"></i>
     <%= link_to "by#{post.user.nickname}先生", root_path, class: :card__user %>
