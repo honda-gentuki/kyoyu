@@ -17,7 +17,6 @@
 | club               | string |                           |
 | a_word             | text   |                           |
 
-
 ### Association
 
 - has_many :posts

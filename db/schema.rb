@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2022_05_05_141237) do
     t.string "subject", null: false
     t.string "course", null: false
     t.string "unit", null: false
-    t.string "introduction", null: false
-    t.integer "introduction_time", null: false
-    t.text "development", null: false
-    t.integer "development_time", null: false
-    t.string "summary", null: false
-    t.integer "summary_time", null: false
+    t.string "introduction"
+    t.integer "introduction_time"
+    t.text "development"
+    t.integer "development_time"
+    t.string "summary"
+    t.integer "summary_time"
     t.string "teaching_materials", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
