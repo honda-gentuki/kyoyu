@@ -4,6 +4,10 @@
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生の情報"%>
       </h2>
+      <div class="post__manage">
+        <%= link_to "フォロー", root_path, class: :post__btn%>
+        <%= link_to "フォロワー", root_path, class: :post__btn %>
+      </div>
       <table class="table">
         <tbody>
           <tr>
@@ -32,6 +36,15 @@
           </tr>
         </tbody>
       </table>
+      <div class="post__manage">
+        <%= link_to "チャット", root_path, class: :post__btn%>
+      </div>
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <div class="post__manage">
+          <%= link_to "編集する", root_path, class: :post__btn%>
+          <%= link_to "削除する", root_path, class: :post__btn, method: :delete %>
+        </div>
+      <% end %>
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生の投稿"%>
       </h2>
