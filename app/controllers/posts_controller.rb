@@ -26,9 +26,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    unless @post.user_id == current_user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @post.user_id == current_user.id
   end
 
   def update
@@ -38,7 +36,6 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-
 end
 
 private

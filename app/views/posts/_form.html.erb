@@ -1,6 +1,6 @@
 <%= form_with model: @post, local: true do |f|%>
 
-<%= render 'shared/error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
     <%= f.label :subject, "教科名" %><br />
@@ -55,5 +55,9 @@
   <div class="field">
     <%= f.label :image, "板書案・スライドなど" %><br />
     <%= f.file_field :image, id:"post_image" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "投稿する", class: :form__btn  %>
   </div>
 <% end %>
