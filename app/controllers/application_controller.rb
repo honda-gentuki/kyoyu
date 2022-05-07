@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
                                              :school, :subject, :club, :a_word])
 
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :email, :first_name, :last_name, :first_name_kana, :last_name_kana, :age, :school,
-      :subject, :club, :a_word])
+                                                              :subject, :club, :a_word])
   end
 end
