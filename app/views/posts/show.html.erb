@@ -4,7 +4,7 @@
       <p class="post__hedding">
         <%= @post.unit %>
       </p>
-      <%= link_to "by #{@post.user.nickname}", root_path, class: :post__user %>
+      <%= link_to "by #{@post.user.nickname}", user_path(current_user), class: :post__user %>
       <% if @post.image.present? %>
       <div class="post__image">
         <%= image_tag @post.image.variant(resize: '500x500') %>
