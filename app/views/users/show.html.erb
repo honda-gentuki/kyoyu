@@ -41,7 +41,7 @@
       </div>
       <% if user_signed_in? && current_user.id == @user.id %>
         <div class="post__manage">
-          <%= link_to "編集する", edit_user_path, class: :post__btn%>
+          <%= link_to "編集する", edit_user_registration_path, class: :post__btn%>
           <%= link_to "削除する", root_path, class: :post__btn, method: :delete %>
         </div>
       <% end %>
