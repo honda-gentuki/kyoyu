@@ -3,6 +3,12 @@
     <div class="form__wrapper">
       <h2 class="page-heading">投稿編集</h2>
         <%= render partial: "form", locals: {post: @posts } %>
+        <%= form_with model: @post, local: true do |f|%>
+          <div class="actions">
+             <%= f.submit "更新する", class: :form__btn  %>
+          </div>
+          <%=link_to '戻る', :back, class:'back-btn' %>
+        <% end %>
     </div>
   </div>
 </div>

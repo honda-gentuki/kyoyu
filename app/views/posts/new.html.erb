@@ -3,6 +3,11 @@
     <div class="form__wrapper">
       <h2 class="page-heading">新規投稿</h2>
         <%= render partial: "form", locals: {post: @posts } %>
+        <%= form_with model: @post, local: true do |f|%>
+          <div class="actions">
+             <%= f.submit "投稿する", class: :form__btn  %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
