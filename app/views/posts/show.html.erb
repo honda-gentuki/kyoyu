@@ -5,9 +5,11 @@
         <%= @post.unit %>
       </p>
       <%= link_to "by #{@post.user.nickname}", root_path, class: :post__user %>
+      <% if @post.image.present? %>
       <div class="post__image">
         <%= image_tag @post.image.variant(resize: '500x500') %>
       </div>
+      <% end %>
       <div class="post__body">
         <div class="post__detail">
           <p class="detail__title">教科名</p>
