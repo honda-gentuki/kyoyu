@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts, :dependent => :destroy
+  has_many :posts, dependent: :destroy
 
   with_options presence: true do
     validates :nickname
@@ -27,16 +27,15 @@ class User < ApplicationRecord
     result
   end
 
-  def soft_delete  
-    update_attribute(:deleted_at, Time.current)  
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
   end
 
-  def active_for_authentication?  
-    super && !deleted_at  
-  end  
+  def active_for_authentication?
+    super && !deleted_at
+  end
 
-  def inactive_message   
-    !deleted_at ? super : :deleted_account  
-  end 
-  
+  def inactive_message
+    !deleted_at ? super : :deleted_account
+  end
 end
