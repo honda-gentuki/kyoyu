@@ -78,27 +78,34 @@
         </div>
       <% end %>
       <div class="post__comments">
-        <% if user_signed_in? %>
-           <%= form_with(model: [@post, @comment], local: true) do |f|%>
-            <div class="field">
-              <%= f.label :content, "コメント" %><br />
-              <%= f.text_field :content, id:"comment_content" %>
-            </div>
-            <div class="actions">
-              <%= f.submit "送信する", class: :form__btn  %>
-            </div>
-          <% end %>
+        <div class="comment-form">
+          <% if user_signed_in? %>
+            <%= form_with model: [@post, @comment], id: "comment-form" do |f|%>
+              <div class="field">
+                <%= f.label :content, "コメント" %><br />
+                <%= f.text_field :content, id:"comment_content" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "送信する", class: :form__btn  %>
+              </div>
+            <% end %>
           <% else %>
-            <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-        <% end %> 
-        <ul class="comments_lists">
-          <% @comments.each do |comment| %>
-            <li class="coment_list">
-              <%= "・#{comment.content}" %>
-              <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
-            </li>
-          <% end %>
-        </ul>
+              <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+          <% end %> 
+        </div>
+        <div id="comments">
+          <h4>＜コメント一覧＞</h4>
+          <ul class="comments_lists">
+            <% @post.comments.each do |comment| %>
+              <div class="comment">
+                <li class="comment_list">
+                  <div>・<%= comment.content %></div> 
+                  <a class="comment_user" href="/users/<%= comment.id %>"><%= comment.user.nickname %></a>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

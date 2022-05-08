@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   def create
-    if @comments = Comment.create(comment_params)
-      redirect_to "/posts/#{@comments.post.id}"
+    @comment = Comment.new(comment_params)
+    @post = post.find(params[:post_id])
+    if @comment.save
+      CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } 
     else
       render post_path
     end
