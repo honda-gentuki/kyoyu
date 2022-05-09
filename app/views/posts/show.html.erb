@@ -80,7 +80,7 @@
       <div class="post__comments">
         <div class="comment-form">
           <% if user_signed_in? %>
-            <%= form_with model: [@post, @comment], id: "comment-form" do |f|%>
+            <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
               <div class="field">
                 <%= f.label :content, "コメント" %><br />
                 <%= f.text_field :content, id:"comment_content" %>
@@ -99,8 +99,8 @@
             <% @post.comments.each do |comment| %>
               <div class="comment">
                 <li class="comment_list">
-                  <div>・<%= comment.content %></div> 
-                  <a class="comment_user" href="/users/<%= comment.id %>"><%= comment.user.nickname %></a>
+                  <%= "・#{comment.content}" %>
+                  <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
                 </li>
               </div>
             <% end %>

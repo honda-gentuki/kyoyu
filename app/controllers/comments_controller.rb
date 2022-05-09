@@ -1,12 +1,8 @@
 class CommentsController < ApplicationController
   def create
+    @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
-    @post = post.find(params[:post_id])
-    if @comment.save
-      CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } 
-    else
-      render post_path
-    end
+    CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } if @comment.save
   end
 
   def destroy
