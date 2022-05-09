@@ -2,6 +2,12 @@ class Post < ApplicationRecord
   belongs_to :user, optional: true
   has_many :comments, dependent: :destroy
   has_one_attached :image
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 
   with_options presence: true do
     validates :subject
