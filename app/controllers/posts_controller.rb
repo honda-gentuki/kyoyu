@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     @users = User.all
     @post = Post.all.order('created_at DESC')
+    @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def new
