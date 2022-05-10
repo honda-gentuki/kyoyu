@@ -5,10 +5,10 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
-  def liked_by?(user)
+  def liked_by?(_user)
     likes.where(user_id: user_id).exists?
   end
-  
+
   with_options presence: true do
     validates :subject
     validates :course

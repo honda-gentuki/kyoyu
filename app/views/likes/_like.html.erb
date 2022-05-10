@@ -1,13 +1,13 @@
 <% if user_signed_in? %>
-    <% if post.liked_by?(current_user) %>
-      <%= link_to(post_likes_path(post), method: :delete, remote: true, id: :"like-button-#{post.id}") do %>
+  <% if post.liked_by?(current_user) %>
+    <%= link_to(post_likes_path(post), method: :delete, remote: true, id: :"like-button-#{post.id}") do %>
         <i class="fa-lg fas fa-heart icon-btn liked"></i>
         <%= post.likes.count %> いいね
-      <% end %>
-    <% else %>
-      <%= link_to(post_likes_path(post), method: :post, remote: true, id: :"like-button-#{post.id}") do %>
+    <% end %>
+  <% else %>
+    <%= link_to(post_likes_path(post), method: :post, remote: true, id: :"like-button-#{post.id}") do %>
         <i class="fa-lg fas fa-heart icon-btn not-like"></i>
         <%= post.likes.count %> いいね
-      <% end %>
     <% end %>
+  <% end %>
 <% end %>
