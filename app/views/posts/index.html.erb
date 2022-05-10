@@ -13,8 +13,9 @@
         <%= f.submit '検索する', name: nil %>
       <% end %>
    </div>
-  <div class="card__wrapper">
+    <div class="card__wrapper">
       <%= render partial: "post", collection: @post %>
     </div>
+     <%= paginate @posts %>
   </div>
 </main>
