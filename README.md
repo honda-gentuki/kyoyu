@@ -21,6 +21,9 @@
 
 - has_many :posts
 - has_many :comments
+- has_many :likes
+- has_many :follower
+- has_many :followed
 
 ## posts テーブル
 
@@ -41,15 +44,16 @@
 ### Association
 
 - has_many :comments
+- has_many :likes
 - belongs_to :user
 
 ## comments テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user      | references | null: false, foreign_key: true |
-| post      | references | null: false, foreign_key: true |
-| content   | text       | null: false                    |
+| Column  | Type       | Options                        |
+| --------| ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| post    | references | null: false, foreign_key: true |
+| content | text       | null: false                    |
 
 ### Association
 
@@ -58,12 +62,24 @@
 
 ## likes テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user      | references | null: false, foreign_key: true |
-| post      | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| post   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :post
+
+## relationships テーブル
+
+| Column   | Type       | Options                        |
+| ---------| ---------- | ------------------------------ |
+| follower | references | null: false, foreign_key: true |
+| followed | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :follower
+- belongs_to :followed
