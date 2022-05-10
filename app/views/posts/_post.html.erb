@@ -8,8 +8,7 @@
     <div id="like-btn-<%= post.id %>">
       <%= render 'likes/like', post: post %>
     </div>
-    <i class="bi bi-heart"></i>
     <i class="bi bi-chat-dots"></i>
     <%= link_to "by#{post.user.nickname}先生", user_path(post.user.id), class: :card__user %>
   </div>
-</div>
+</div>\
