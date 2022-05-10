@@ -93,19 +93,19 @@
               <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
           <% end %> 
         </div>
-        <div id="comments">
-          <h4>＜コメント一覧＞</h4>
-          <ul class="comments_lists">
-            <% @post.comments.each do |comment| %>
-              <div class="comment">
-                <li class="comment_list">
-                  <%= "・#{comment.content}" %>
-                  <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
-                </li>
-              </div>
-            <% end %>
-          </ul>
-        </div>
+      </div>  
+      <div id="comments">
+        <h4>＜コメント一覧＞</h4>
+        <ul class="comments_lists">
+          <% @post.comments.each do |comment| %>
+            <div class="comment">
+              <li class="comment_list">
+                <%= "・#{comment.content}" %>
+                <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
+              </li>
+            </div>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>

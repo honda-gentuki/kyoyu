@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-if(location.pathname.match(/\/items\/\d/)){
+if(location.pathname.match(/\/posts\/\d/)){
 
   consumer.subscriptions.create({
     channel: "CommentChannel",
@@ -16,7 +16,6 @@ if(location.pathname.match(/\/items\/\d/)){
     },
 
     received(data) {
-      console.log(data) 
       const html = `
       <div class="comment">
         <li class="comment_list">
