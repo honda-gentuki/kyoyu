@@ -62,7 +62,7 @@
         </tbody>
       </table>
       <div class="post__manage">
-        <%= link_to "チャット", root_path, class: :post__btn%>
+        <%= link_to "チャット", chat_path, class: :post__btn%>
       </div>
       <% if user_signed_in? && current_user.id == @user.id %>
         <div class="post__manage">

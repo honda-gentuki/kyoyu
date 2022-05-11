@@ -24,6 +24,9 @@
 - has_many :likes
 - has_many :follower
 - has_many :followed
+- has_many :room_users
+- has_many :rooms, through: :room_users
+- has_many :chats
 
 ## posts テーブル
 
@@ -83,3 +86,39 @@
 
 - belongs_to :follower
 - belongs_to :followed
+
+## rooms テーブル
+
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+
+### Association
+
+- has_many :room_users
+- has_many :users, through: :room_users
+- has_many :chats
+
+## room_users テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| room   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :room
+- belongs_to :user
+
+## chats テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| room    | references | null: false, foreign_key: true |
+| message | text       |                                |
+
+### Association
+
+- belongs_to :user
+- belongs_to :room
