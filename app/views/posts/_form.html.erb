@@ -53,11 +53,14 @@
   </div>
 
   <div class="field">
-   <div id="previews"></div>
-    <%= f.label :image, "板書案・スライドなど" %><br />
-    <%= f.file_field :image, id:"post_image" %>
-  </div>
-
+    <div class="image-field">
+      <div id="previews"></div>
+        <div class="click-upload">
+          <%= f.label :image, "板書案・スライド" %><br />
+          <%= f.file_field :images, name: 'post[images][]', data: {index: 0}, id:"post_images" %>
+        </div>
+      </div>
+    </div>
   <div class="actions">
     <%= f.submit "投稿する", class: :form__btn  %>
   </div>
