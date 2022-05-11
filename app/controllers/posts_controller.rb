@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posts = Post.all
   end
 
   def create
@@ -51,7 +52,7 @@ private
 
 def post_params
   params.require(:post).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
-                               :development_time, :summary, :summary_time, :image).merge(user_id: current_user.id)
+                               :development_time, :summary, :summary_time, {images: []}).merge(user_id: current_user.id)
 end
 
 def move_to_index
