@@ -116,9 +116,9 @@
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
 | room    | references | null: false, foreign_key: true |
-| message | string     |                                |
+| message | text       |                                |
 
 ### Association
 
-- belongs_to :room
 - belongs_to :user
+- belongs_to :room
