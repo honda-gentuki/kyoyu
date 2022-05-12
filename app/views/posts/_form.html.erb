@@ -63,8 +63,10 @@
     </div>
 
   <div class="field">
+    <%= f.label :tag_name, "タグ" %><br />
     <%= f.text_field :tag_name, placeholder: 'add tags' %>
   </div>
+  <div id="search-result"></div>
 
   <div class="actions">
     <%= f.submit "投稿する", class: :form__btn  %>
