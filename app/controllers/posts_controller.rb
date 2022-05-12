@@ -3,11 +3,12 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update]
 
+
   def index
     @users = User.all
-    @post = Post.all.order('created_at DESC')
-    @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
-    @posts = Post.page(params[:page]).reverse_order
+    @post = Post.all.order('created_at DESC').page(params[:page]).reverse_order
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
   end
 
   def new
@@ -58,8 +59,8 @@ class PostsController < ApplicationController
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
-    @q = Item.ransack(params[:q])
-    @items = @q.result
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
   end
 
   private
