@@ -38,6 +38,7 @@ class PostsController < ApplicationController
 
   def update
     @post_form = PostForm.new(post_form_params)
+    @post_form.images ||= @post.images.blobs
     if @post_form.valid?
       @post_form.update(post_form_params, @post)
       redirect_to post_path
