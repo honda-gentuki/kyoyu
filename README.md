@@ -137,9 +137,9 @@
 
 ##  tagsテーブル
 
-| Column  | Type       | Options |
-| ------- | ---------- | ------- |
-| name    | string     |         |
+| Column      | Type       | Options |
+| ----------- | ---------- | ------- |
+| tag_name    | string     |         |
 
 ### Association
 
