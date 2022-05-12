@@ -34,6 +34,7 @@ class PostsController < ApplicationController
     redirect_to action: :index unless @post.user_id == current_user.id
     post_attributes = @post.attributes
     @post_form = PostForm.new(post_attributes)
+    @post_form.tag_name = @post.tags&.first&.tag_name
   end
 
   def update
@@ -58,7 +59,7 @@ private
 
 def post_form_params
   params.require(:post_form).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
-                                    :development_time, :summary, :summary_time, { images: [] }).merge(user_id: current_user.id)
+                                    :development_time, :summary, :summary_time, :tag_name, { images: [] }).merge(user_id: current_user.id)
 end
 
 def move_to_index
