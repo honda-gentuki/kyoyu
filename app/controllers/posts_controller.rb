@@ -53,19 +53,26 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to root_path
   end
-end
 
-private
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
+  end
 
-def post_form_params
-  params.require(:post_form).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
+  private
+
+  def post_form_params
+    params.require(:post_form).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
                                     :development_time, :summary, :summary_time, :tag_name, { images: [] }).merge(user_id: current_user.id)
-end
+  end
 
-def move_to_index
-  redirect_to new_user_session_path unless user_signed_in?
-end
+  def move_to_index
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 
-def set_post
-  @post = Post.find(params[:id])
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end
