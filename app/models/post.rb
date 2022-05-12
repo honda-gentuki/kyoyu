@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many_attached :images
+  has_many :post_tags
+  has_many :tags, through: :post_tags
 
 
   def liked_by?(_user)
