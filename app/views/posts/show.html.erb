@@ -78,6 +78,12 @@
             <%= @post.summary_time %>
           </p>
         </div>
+        <div class="post__detail">
+          <p class="detail__title">タグ</p>
+          <p class="detail__message">
+            <%= @post.tags&.first&.tag_name %>
+          </p>
+        </div>
       <% if user_signed_in? && current_user.id == @post.user_id %>
         <div class="post__manage">
           <%= link_to "編集する", edit_post_path, class: :post__btn%>
