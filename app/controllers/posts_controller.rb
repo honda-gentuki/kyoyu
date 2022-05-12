@@ -11,13 +11,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post_form = PostForm.new
     @posts = Post.all
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
+    @post_form = PostForm.new(post_form_params)
+    if @post_form.valid?
+      @post_form.save
       redirect_to root_path
     else
       render :new
@@ -31,10 +32,14 @@ class PostsController < ApplicationController
 
   def edit
     redirect_to action: :index unless @post.user_id == current_user.id
+    post_attributes = @post.attributes
+    @post_form = PostForm.new(post_attributes)
   end
 
   def update
-    if @post.update(post_params)
+    @post_form = PostForm.new(post_form_params)
+    if @post_form.valid?
+      @post_form.update(post_form_params, @post)
       redirect_to post_path
     else
       render :edit
@@ -50,9 +55,9 @@ end
 
 private
 
-def post_params
-  params.require(:post).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
-                               :development_time, :summary, :summary_time, { images: [] }).merge(user_id: current_user.id)
+def post_form_params
+  params.require(:post_form).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
+                                    :development_time, :summary, :summary_time, { images: [] }).merge(user_id: current_user.id)
 end
 
 def move_to_index
