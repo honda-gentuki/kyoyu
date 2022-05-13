@@ -148,3 +148,23 @@
 
 - has_many :post_tags
 - has_many :pots, through: :post_tags
+
+##  notificationsテーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| visitor     | references | null: false, foreign_key: true |
+| visited     | references | null: false, foreign_key: true |
+| post_id     | integer    |                                |
+| comment_id  | integer    |                                |
+| comment_id  | integer    |                                |
+| action      | string     | null: false                    |
+| checked     | boolean    | null: false                    |
+
+
+
+
+### Association
+
+- has_many :post_tags
+- has_many :pots, through: :post_tags
