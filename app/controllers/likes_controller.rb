@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
     like = Like.create(user_id: user.id, post_id: post.id)
-    post.create_notification_like!(current_user)
+    @post.create_notification_by(current_user)
   end
 
   def destroy

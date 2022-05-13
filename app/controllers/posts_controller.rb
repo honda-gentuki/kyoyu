@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update]
 
-
   def index
     @users = User.all
     @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
@@ -55,16 +54,17 @@ class PostsController < ApplicationController
   end
 
   def search
-    return nil if params[:keyword] == ""
-    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
-    render json:{ keyword: tag }
+    return nil if params[:keyword] == ''
+
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: tag }
   end
 
   private
 
   def post_form_params
     params.require(:post_form).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
-                                    :development_time, :summary, :summary_time, :tag_name, { images: [] }).merge(user_id: current_user.id)
+                                      :development_time, :summary, :summary_time, :tag_name, { images: [] }).merge(user_id: current_user.id)
   end
 
   def move_to_index
@@ -74,5 +74,4 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
-
 end
