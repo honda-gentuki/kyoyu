@@ -155,7 +155,7 @@
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| visitor     | integer    | null: false, foreign_key: true |
+| visiter     | integer    | null: false, foreign_key: true |
 | visited     | integer    | null: false, foreign_key: true |
 | post_id     | integer    |                                |
 | comment_id  | integer    |                                |
@@ -170,5 +170,5 @@
 
 - belongs_to :post
 - belongs_to :comment
-- belongs_to :visitor
+- belongs_to :visiter
 - belongs_to :visited
