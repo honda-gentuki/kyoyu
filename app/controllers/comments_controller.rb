@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @post = Post.find(params[:post_id])
     CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } if @comment.save
+    @post.create_notification_comment!(current_user, @comment.id)    
   end
 
   private
