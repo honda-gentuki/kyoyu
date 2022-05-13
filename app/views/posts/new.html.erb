@@ -1,8 +1,9 @@
+<% breadcrumb :new_post %>
 <div class="main">
   <div class="inner">
     <div class="form__wrapper">
       <h2 class="page-heading">新規投稿</h2>
-        <%= render partial: "form", locals: {post: @posts } %>
+        <%= render partial: "form", locals: {url: posts_path, method: :post} %>
     </div>
   </div>
 </div>

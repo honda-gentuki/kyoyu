@@ -49,6 +49,9 @@
 - has_many :comments
 - has_many :likes
 - belongs_to :user
+- has_many :post_tags
+- has_many :tags, through: :post_tags
+
 
 ## comments テーブル
 
@@ -89,8 +92,8 @@
 
 ## rooms テーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
+| Column | Type   | Options |
+| ------ | ------ | ------- |
 
 ### Association
 
@@ -122,3 +125,26 @@
 
 - belongs_to :user
 - belongs_to :room
+
+##  post_tagsテーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| post    | references | null: false, foreign_key: true |
+| tag     | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :post
+- belongs_to :tag
+
+##  tagsテーブル
+
+| Column      | Type       | Options |
+| ----------- | ---------- | ------- |
+| tag_name    | string     |         |
+
+### Association
+
+- has_many :post_tags
+- has_many :pots, through: :post_tags

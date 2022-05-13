@@ -3,21 +3,22 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update]
 
+
   def index
     @users = User.all
-    @post = Post.all.order('created_at DESC')
     @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
-    @posts = Post.page(params[:page]).reverse_order
+    @post = Post.all.order('created_at DESC').page(params[:page]).reverse_order
   end
 
   def new
-    @post = Post.new
+    @post_form = PostForm.new
     @posts = Post.all
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
+    @post_form = PostForm.new(post_form_params)
+    if @post_form.valid?
+      @post_form.save
       redirect_to root_path
     else
       render :new
@@ -31,10 +32,16 @@ class PostsController < ApplicationController
 
   def edit
     redirect_to action: :index unless @post.user_id == current_user.id
+    post_attributes = @post.attributes
+    @post_form = PostForm.new(post_attributes)
+    @post_form.tag_name = @post.tags&.first&.tag_name
   end
 
   def update
-    if @post.update(post_params)
+    @post_form = PostForm.new(post_form_params)
+    @post_form.images ||= @post.images.blobs
+    if @post_form.valid?
+      @post_form.update(post_form_params, @post)
       redirect_to post_path
     else
       render :edit
@@ -46,19 +53,26 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to root_path
   end
-end
 
-private
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
+  end
 
-def post_params
-  params.require(:post).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
-                               :development_time, :summary, :summary_time, { images: [] }).merge(user_id: current_user.id)
-end
+  private
 
-def move_to_index
-  redirect_to new_user_session_path unless user_signed_in?
-end
+  def post_form_params
+    params.require(:post_form).permit(:subject, :course, :unit, :teaching_materials, :introduction, :introduction_time, :development,
+                                    :development_time, :summary, :summary_time, :tag_name, { images: [] }).merge(user_id: current_user.id)
+  end
 
-def set_post
-  @post = Post.find(params[:id])
+  def move_to_index
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end

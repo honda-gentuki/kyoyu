@@ -1,3 +1,9 @@
+<% if params[:page].nil? || params[:page] == 1 %>
+  <% breadcrumb :root %>
+<% else %>
+  <% breadcrumb :posts_pagination, params[:page] %>
+<% end %>
+
 <main class="main">
   <div class="inner">
     <div class="greeting">
@@ -16,6 +22,6 @@
     <div class="card__wrapper">
       <%= render partial: "post", collection: @post %>
     </div>
-     <%= paginate @posts %>
+     <%= paginate @post %>
   </div>
 </main>

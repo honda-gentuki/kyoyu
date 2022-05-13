@@ -1,3 +1,4 @@
+<% breadcrumb :post_show, @post %>
 <main class="main">
   <div class="inner">
     <div class="post__wrapper">
@@ -76,6 +77,12 @@
           <p class="detail__title">まとめの時間</p>
           <p class="detail__message">
             <%= @post.summary_time %>
+          </p>
+        </div>
+        <div class="post__detail">
+          <p class="detail__title">タグ</p>
+          <p class="detail__message">
+            <%= @post.tags&.first&.tag_name %>
           </p>
         </div>
       <% if user_signed_in? && current_user.id == @post.user_id %>
