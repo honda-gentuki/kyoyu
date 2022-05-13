@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
   resources :chats, only: [:show, :create]
+  resources :notifications, only: :index
 end
