@@ -51,6 +51,7 @@
 - belongs_to :user
 - has_many :post_tags
 - has_many :tags, through: :post_tags
+- has_many :notifications
 
 
 ## comments テーブル
@@ -65,6 +66,7 @@
 
 - belongs_to :user
 - belongs_to :post
+- has_many :notifications
 
 ## likes テーブル
 
@@ -166,5 +168,7 @@
 
 ### Association
 
-- has_many :post_tags
-- has_many :pots, through: :post_tags
+- belongs_to :post
+- belongs_to :comment
+- belongs_to :visitor
+- belongs_to :visited
