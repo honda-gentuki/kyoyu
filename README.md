@@ -153,8 +153,8 @@
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| visitor     | references | null: false, foreign_key: true |
-| visited     | references | null: false, foreign_key: true |
+| visitor     | integer    | null: false, foreign_key: true |
+| visited     | integer    | null: false, foreign_key: true |
 | post_id     | integer    |                                |
 | comment_id  | integer    |                                |
 | comment_id  | integer    |                                |
