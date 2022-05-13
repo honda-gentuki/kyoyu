@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_05_13_075624) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "visitor_id", null: false
+    t.integer "visiter_id", null: false
     t.integer "visited_id", null: false
     t.integer "post_id"
     t.integer "comment_id"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2022_05_13_075624) do
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
-    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+    t.index ["visiter_id"], name: "index_notifications_on_visiter_id"
   end
 
   create_table "post_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
