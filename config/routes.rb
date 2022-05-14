@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
     member do
-      get :follows, :followers
+      get :following, :followers
     end
-    resource :relationships, only: [:create, :destroy]
   end
+  resources :relationships, only: [:create, :destroy]
   resources :chats, only: [:show, :create]
+  resources :notifications, only: :index
 end

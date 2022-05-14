@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
@@ -24,11 +25,17 @@
             <%= link_to image_tag("logo.png", class: :logo), root_path %>
           </div>
           <% if user_signed_in? %>
-          <div class="nav__right">
+            <div class="nav__right">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
               <%= link_to "投稿する", new_post_path, class: :nav__btn %>
             </div> 
-          <% else %>
+            <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <li>
+              <%= link_to "NOTICE", notifications_path, class: "btn-default" %>
+            </li>
+            <% else %>
             <div class="nav__right">
               <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
               <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>

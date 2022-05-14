@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :tag do
+  factory :notification do
   end
 end

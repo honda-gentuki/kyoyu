@@ -51,6 +51,7 @@
 - belongs_to :user
 - has_many :post_tags
 - has_many :tags, through: :post_tags
+- has_many :notifications
 
 
 ## comments テーブル
@@ -65,6 +66,7 @@
 
 - belongs_to :user
 - belongs_to :post
+- has_many :notifications
 
 ## likes テーブル
 
@@ -80,15 +82,15 @@
 
 ## relationships テーブル
 
-| Column   | Type       | Options                        |
-| ---------| ---------- | ------------------------------ |
-| follower | references | null: false, foreign_key: true |
-| followed | references | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| follower  | references | null: false, foreign_key: true |
+| following | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :follower
-- belongs_to :followed
+- belongs_to :following
 
 ## rooms テーブル
 
@@ -148,3 +150,22 @@
 
 - has_many :post_tags
 - has_many :pots, through: :post_tags
+
+##  notificationsテーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| visiter     | integer    | null: false, foreign_key: true |
+| visited     | integer    | null: false, foreign_key: true |
+| post_id     | integer    |                                |
+| comment_id  | integer    |                                |
+| comment_id  | integer    |                                |
+| action      | string     | null: false                    |
+| checked     | boolean    | null: false                    |
+
+### Association
+
+- belongs_to :post
+- belongs_to :comment
+- belongs_to :visiter
+- belongs_to :visited

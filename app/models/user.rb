@@ -6,24 +6,32 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :posts, through: :likes
-  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
-  has_many :following_user, through: :follower, source: :followed
-  has_many :follower_user, through: :followed, source: :follower
+  has_many :following_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
+  has_many :following, through: :following_relationships
+  has_many :follower_relationships, foreign_key: 'following_id', class_name: 'Relationship', dependent: :destroy
+  has_many :followers, through: :follower_relationships
   has_many :room_users, dependent: :destroy
   has_many :rooms, through: :room_users, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  def follow(user_id)
-    follower.create(followed_id: user_id)
-  end
-
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+  def already_liked?(post)
+    likes.exists?(post_id: post.id)
   end
 
   def following?(user)
-    following_user.include?(user)
+    following_relationships.find_by(following_id: user.id)
+  end
+
+  # フォローするときのメソッド
+  def follow(user)
+    following_relationships.create!(following_id: user.id)
+  end
+
+  # フォローを外すときのメソッド
+  def unfollow(user)
+    following_relationships.find_by(following_id: user.id).destroy
   end
 
   with_options presence: true do
@@ -59,5 +67,16 @@ class User < ApplicationRecord
 
   def inactive_message
     !deleted_at ? super : :deleted_account
+  end
+
+  def create_notification_follow!(current_user)
+    temp = Notification.where(['visiter_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end
