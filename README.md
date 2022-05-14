@@ -27,6 +27,8 @@
 - has_many :room_users
 - has_many :rooms, through: :room_users
 - has_many :chats
+- has_many :reads
+
 
 ## posts テーブル
 
@@ -52,6 +54,7 @@
 - has_many :post_tags
 - has_many :tags, through: :post_tags
 - has_many :notifications
+- has_many :reads
 
 
 ## comments テーブル
@@ -169,3 +172,16 @@
 - belongs_to :comment
 - belongs_to :visiter
 - belongs_to :visited
+
+## reads テーブル
+
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| user     | references | null: false, foreign_key: true |
+| chat     | references | null: false, foreign_key: true |
+| complete | boolean    |                                |
+
+### Association
+
+- belongs_to :user
+- belongs_to :chat
