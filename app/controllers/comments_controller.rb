@@ -3,9 +3,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @post = Post.find(params[:post_id])
     CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } if @comment.save
-    @post.create_notification_comment!(current_user, @comment.id)
+    @comment = @post.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    @comment.save
+    @comment_post = @comment.post
     @comment_post.create_notification_comment!(current_user, @comment.id)
-    @user.create_notification_follow!(current_user)
+    render :index
   end
 
   private
