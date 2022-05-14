@@ -8,10 +8,6 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :notifications, dependent: :destroy
 
-  def liked_by?(_user)
-    likes.where(user_id: user_id).exists?
-  end
-
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,

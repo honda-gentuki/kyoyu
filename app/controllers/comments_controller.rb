@@ -5,10 +5,12 @@ class CommentsController < ApplicationController
     CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } if @comment.save
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
     @comment_post = @comment.post
-    @comment_post.create_notification_comment!(current_user, @comment.id)
-    render :index
+    if @comment.save
+      #通知の作成
+      @comment_post.create_notification_comment!(current_user, @comment.id)
+      render :index
+    end
   end
 
   private
