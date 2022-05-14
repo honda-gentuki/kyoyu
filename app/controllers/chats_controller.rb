@@ -15,6 +15,9 @@ class ChatsController < ApplicationController
 
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
+    if Read.create(chat_id: @chat.id, user_id: current_user.id) 
+      @read = Read.update(complete: true)
+    end
   end
 
   def create
