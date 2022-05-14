@@ -82,15 +82,15 @@
 
 ## relationships テーブル
 
-| Column   | Type       | Options                        |
-| ---------| ---------- | ------------------------------ |
-| follower | references | null: false, foreign_key: true |
-| followed | references | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| follower  | references | null: false, foreign_key: true |
+| following | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :follower
-- belongs_to :followed
+- belongs_to :following
 
 ## rooms テーブル
 
@@ -162,9 +162,6 @@
 | comment_id  | integer    |                                |
 | action      | string     | null: false                    |
 | checked     | boolean    | null: false                    |
-
-
-
 
 ### Association
 
