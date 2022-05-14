@@ -10,6 +10,8 @@ require("channels")
 require('jquery')
 require('../preview')
 require("../tag")
+require("relationships/create")
+require("relationships/destroy")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
