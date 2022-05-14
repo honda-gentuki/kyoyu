@@ -19,7 +19,7 @@ if(location.pathname.match(/\/posts\/\d/)){
       const html = `
       <div class="comment">
         <li class="comment_list">
-         ・${data.comment.content}
+         ${data.comment.content}
           <a class="comment_user" href="/users/user.id">${data.user.nickname}</a>
         </li>
       </div>`
