@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :posts, through: :likes
-  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
+  has_many :following_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :following, through: :following_relationships
-  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+  has_many :follower_relationships, foreign_key: 'following_id', class_name: 'Relationship', dependent: :destroy
   has_many :followers, through: :follower_relationships
   has_many :room_users, dependent: :destroy
   has_many :rooms, through: :room_users, dependent: :destroy
@@ -17,19 +17,19 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def already_liked?(post)
-    self.likes.exists?(post_id: post.id)
+    likes.exists?(post_id: post.id)
   end
 
   def following?(user)
     following_relationships.find_by(following_id: user.id)
   end
 
-  #フォローするときのメソッド
+  # フォローするときのメソッド
   def follow(user)
     following_relationships.create!(following_id: user.id)
   end
 
-  #フォローを外すときのメソッド
+  # フォローを外すときのメソッド
   def unfollow(user)
     following_relationships.find_by(following_id: user.id).destroy
   end

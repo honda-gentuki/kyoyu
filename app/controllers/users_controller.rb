@@ -4,28 +4,29 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts.page(params[:page]).reverse_order
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user
+    @following_users = @user.following
+    @follower_users = @user.followers
   end
 
   def following
     @users = @user.following
-    render 'show_follow'
-end
+    render 'follows'
+  end
 
   def followers
     @users = @user.followers
-    render 'show_follower'
+    render 'followers'
   end
 
   def create
     @user = User.find(params[:following_id])
     current_user.follow(@user)
-    #通知の作成
+    # 通知の作成
     @user.create_notification_follow!(current_user)
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
