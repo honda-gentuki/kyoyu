@@ -17,3 +17,19 @@
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+.main a:visited {
+  color: #1b00ee;
+}
+
+.main a{
+  text-decoration: none;
+}
+
+.breadcrumbs a:visited {
+  color: #1b00ee;
+}
+
+.breadcrumbs a{
+  text-decoration: none;
+}
