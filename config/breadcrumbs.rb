@@ -8,7 +8,7 @@ crumb :posts_pagination do |page|
 end
 
 crumb :user_new do
-  link "ユーザー登録", new_user_registration_path
+  link "新規登録", new_user_registration_path
   parent :root
 end
 
