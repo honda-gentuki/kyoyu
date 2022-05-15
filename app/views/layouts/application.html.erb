@@ -26,16 +26,30 @@
           </div>
           <% if user_signed_in? %>
             <div class="nav__right">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
-              <%= link_to "投稿する", new_post_path, class: :nav__btn %>
-            </div> 
-            <% if unchecked_notifications.any? %>
-                <i class="fa fa-circle" style="color: gold;"></i>
-            <% end %>
-            <li>
-              <%= link_to "NOTICE", notifications_path, class: "btn-default" %>
-            </li>
-            <% else %>
+              <div class="nav-btn">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
+                <%= link_to "投稿する", new_post_path, class: :nav__btn %>
+              </div>
+              <div class="nav-icon">
+                <div class="btn-user">
+                  <%= link_to user_path(current_user) do%>
+                    <i class="bi bi-person-circle size"></i>
+                  <% end %>
+                </div>
+                <div class="btn-default">
+                  <%= link_to notifications_path do %>
+                    <i class="bi bi-bell size"></i>
+                  <% end %>
+                  <div class=" bottom-right">
+                    <% if unchecked_notifications.any? %>
+                      <i class="bi bi-circle-fill"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% else %>
+            </div>
             <div class="nav__right">
               <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
               <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
