@@ -1,0 +1,94 @@
+/* ヘッダー */
+
+.header {
+  background-color: #2f496e;
+  padding: 20px 0;
+}
+
+.inner {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 75px;
+  border-radius: 5px;
+}
+
+.nav__btn{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #fff solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin-left: 25px;
+}
+
+.nav__btn:hover{
+  color: #fff;
+  background: #87CEFA;
+}
+
+.nav__logout{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #fff solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin-left: 25px;
+}
+
+.nav__right{
+  display: flex;
+}
+
+.nav__logout:hover{
+  opacity: 0.5;
+}
+
+.nav-icon{
+  display: flex;
+}
+
+.btn-user a{
+  text-decoration: none;
+}
+
+.btn-default a{
+  text-decoration: none;
+}
+
+.size{
+  font-size:1.4em;
+}
+
+.btn-default{
+  position: relative;
+  margin-left: 25px;
+}
+
+.btn-user{
+  margin-left: 25px;
+}
+
+.bottom-right {
+  position: absolute;
+  color: #f9ba32;
+  top: 15px;
+  left: 15px;
+}
