@@ -15,7 +15,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :school
       t.string :subject
       t.string :club
-      t.text   :a_word 
+      t.text   :introduce 
+      t.string :image
 
       ## Recoverable
       t.string   :reset_password_token
