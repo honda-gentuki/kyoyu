@@ -33,7 +33,7 @@ crumb :post_edit do |post|
 end
 
 crumb :user_show do |user|
-  link "#{user.nickname}先生の詳細", user_path(user)
+  link "#{user.nickname}先生のプロフィール", user_path(user)
   parent :root
 end
 

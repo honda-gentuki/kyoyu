@@ -1,75 +1,121 @@
-<%= form_with model:  @post_form,  url: url, method: method, id: 'new_post', local: true do |f| %>
+<%= form_with model:  @post_form,  url: url, method: method, class: 'registration-main', id: 'new_post', local: true do |f| %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        新規投稿
+      </h1>
+    </div>
 
-  <%= render 'shared/error_messages', object: f.object %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.label :subject, "教科名" %><br />
-    <%= f.text_field :subject, id:"post_subject" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">教科名</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :subject, class:"input-default", id:"post_subject", placeholder:"例) 社会", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :course, "科目名" %><br />
-    <%= f.text_field :course, id:"post_course" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">科目名</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :course, class:"input-default", id:"post_course", placeholder:"例)政治経済 ", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :unit, "単元名" %><br />
-    <%= f.text_field :unit, id:"post_unit" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">単元名</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :unit, class:"input-default", id:"post_unit", placeholder:"例)選挙の仕組み ", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :teaching_materials, "教材名" %><br />
-    <%= f.text_field :teaching_materials, id:"post_teaching_materials" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">教材名</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :teaching_materials, class:"input-default", id:"post_teaching_materials", placeholder:"例)〇〇出版 ", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :introduction, "導入" %><br />
-    <%= f.text_area :introduction, class: :form__text, id:"post_introduction" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">導入時間(数字)</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <span>
+      <%= f.text_field :introduction_time, class:"input-name", id:"post_introduction_time", placeholder:"例)5", maxlength:"40" %>分
+      </span>
+    </div>
 
-  <div class="field">
-    <%= f.text_field :introduction_time, id:"post_introduction_time" %>
-    分
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">導入</label>
+        <span class="indispensable">必須</span>
+      </div>
+        <%= f.text_area :introduction, class:"input-default", id:"post_introduction", placeholder:"導入を記入してください", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :development, "展開" %><br />
-    <%= f.text_area :development, class: :form__text, id:"post_development" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">展開時間(数字)</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <span>
+        <%= f.text_field :development_time, class:"input-name", id:"post_development_time", placeholder:"例)40", maxlength:"40" %>分
+      </span>
+    </div>
 
-    <div class="field">
-    <%= f.text_field :development_time, id:"post_development_time" %>
-    分
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">展開</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :development, class:"input-default", id:"post_development", placeholder:"展開を記入してください", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :summary, "まとめ" %><br />
-    <%= f.text_area :summary, class: :form__text, id:"post_summary" %>
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">まとめ時間(数字)</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <span>
+        <%= f.text_field :summary_time, class:"input-name", id:"post_summary_time", placeholder:"例)5", maxlength:"40" %>分
+      </span>
+    </div>
 
-    <div class="field">
-    <%= f.text_field :summary_time, id:"post_summary_time" %>
-    分
-  </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">まとめ</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :summary, class:"input-default", id:"post_summary", placeholder:"まとめを記入してください", maxlength:"40" %>
+    </div>
 
-  <div class="field">
-    <div class="image-field">
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">板書案・スライド</label>
+        <span class="indispensable">任意</span>
+      </div>
       <div id="previews"></div>
-        <div class="click-upload">
-          <%= f.label :images, "板書案・スライド" %><br />
-          <%= f.file_field :images, name: 'post_form[images][]', data: {index: 0}, id:"post_images" %>
-        </div>
+      <div class="click-upload">
+        <%= f.file_field :images, name: 'post_form[images][]', data: {index: 0}, id:"post_images" %>
       </div>
     </div>
 
-  <div class="field">
-    <%= f.label :tag_name, "タグ" %><br />
-    <%= f.text_field :tag_name, placeholder: 'add tags' %>
-  </div>
-  <div id="search-result"></div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">タグ</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :tag_name, class:"input-default", id:"post_tag_name", placeholder:"例)選挙" %>
+      <div id="search-result"></div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "投稿する", class: :form__btn %>
+    <div class="actions">
+      <%= f.submit "投稿する", class: :form__btn %>
+    </div>
   </div>
-  
 <% end %>

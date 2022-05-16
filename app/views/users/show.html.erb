@@ -3,65 +3,70 @@
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
-        <%= "#{@user.nickname}先生の情報"%>
+        <%= "#{@user.nickname}先生のプロフィール"%>
       </h2>
-      <div class="post__manage">
-        <p class="d-flex justify-content-end">
-          <% if user_signed_in? && @user == current_user %>
-            <%= link_to "プロフィール編集", edit_user_registration_path(@user), class: "btn-sm btn-success" %>
-          <% end %>
-        </p>
-        <div class="ml-3 mb-3 card w-100">
-          <div class="d-flex">
-            <h4 class="ml-5 m-3"><%= @user.nickname %></h4>
-          </div>
-          <div class="d-flex">
-            <div class="follower">
-              <%= link_to followers_user_path(@user.id) do %>
-                <h5 style="color: black;">フォロワー<%= @user.followers.count %>人</h5>
+
+      <div class="user-profile">
+        <div class="profile-left">
+          <div class="profile-card">
+            <div class="card-header">
+              <%= "#{@user.nickname}先生" %>
+              <span><%= "(#{@user.age}代" %> <%= "#{@user.sex})" %></span>
+            </div>
+            <div class="card-image">
+              <% if @user.image? %>
+                <%= image_tag @user.image.url %>
+              <% else %>
+                <%= image_tag("/images/no-image.png") %>
               <% end %>
             </div>
-            <div class="follow">
-              <%= link_to following_user_path(@user.id) do %>
-                <h5 style="color: black;">フォロー<%= @user.following.count %>人</h5>
+            <div class="card-footer">
+              <div class="user-follows">
+                <div class="follower">
+                  <%= link_to followers_user_path(@user.id) do %>
+                    <h5 style="color: black;">フォロワー<%= @user.followers.count %>人</h5>
+                  <% end %>
+                </div>
+                <div class="follow">
+                  <%= link_to following_user_path(@user.id) do %>
+                    <h5 style="color: black;">フォロー<%= @user.following.count %>人</h5>
+                  <% end %>
+                </div>
+              <div>
+                <%= render "follow_form" %>
+              </div> 
+              <% if user_signed_in? && @user == current_user %>
+                <%= link_to "Edit profole", edit_user_registration_path(@user), class: "btn-sm btn-success" %>
+                <i class="bi bi-gear-wide-connected"></i>
               <% end %>
-            </div>
-            <div>
-              <%= render "follow_form" %>
-            </div>
+            </div>  
           </div>
+        </div> 
+        </div>
+        <div class="profile-right">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th class="table__col1">学校名</th>
+                <td class="table__col2"><%= @user.school %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">担当教科</th>
+                <td class="table__col2"><%= @user.subject %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">部活動</th>
+                <td class="table__col2"><%= @user.club %></td>
+              </tr>
+              <tr>
+                <th class="table__col3">自己紹介</th>
+                <td class="table__col4"><%= @user.introduce %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class=" row justify-content-center">
-      </div>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">ニックネーム</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">年齢</th>
-            <td class="table__col2"><%= @user.age %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">学校名</th>
-            <td class="table__col2"><%= @user.school %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">担当教科</th>
-            <td class="table__col2"><%= @user.subject %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">部活動</th>
-            <td class="table__col2"><%= @user.club %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">一言</th>
-            <td class="table__col2"><%= @user.introduce %></td>
-          </tr>
-        </tbody>
-      </table>
+
       <div class="post__manage">
         <%= link_to "チャット", chat_path, class: :post__btn%>
       </div>
