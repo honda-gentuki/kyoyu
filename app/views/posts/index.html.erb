@@ -10,15 +10,16 @@
       <% if user_signed_in? %>
         <%= "こんにちは" %>
         <%= link_to "#{current_user.nickname}", user_path(current_user), class: :greeting__link %>
-        先生
+        <%= "先生" %>
       <% end%> 
     </div>
-     <div class="row justify-content-end mb-3">
-      <%= form_with url: posts_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search %>
-        <%= f.submit '検索する', name: nil %>
-      <% end %>
-   </div>
+      <div class="search">
+        <%= form_with url: posts_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search, class:"input-search", id:"input_search", maxlength:"40" %>
+          <%= f.submit '検索', class: :search__btn %>
+        <% end %>
+      </div>
+      
     <div class="card__wrapper">
       <%= render partial: "post", collection: @post %>
     </div>
