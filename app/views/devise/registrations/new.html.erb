@@ -25,7 +25,7 @@
         <label class="form-text">ニックネーム</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) 国語太郎", maxlength:"40" %>
+      <%= f.text_field :nickname, class:"input-default", id:"user_nickname", placeholder:"例) 国語太郎", maxlength:"40" %>
     </div>
 
     <div class="form-group">
@@ -68,8 +68,8 @@
           <span class="indispensable">必須</span>
       </div>
       <div class='input-name-wrap'>
-        <%= f.text_area :last_name, class:"input-name", id:"user_last_name", placeholder:"例) 山田" %>
-        <%= f.text_area :first_name, class:"input-name", id:"user_first_name", placeholder:"例) 太郎" %>
+        <%= f.text_field :last_name, class:"input-name", id:"user_last_name", placeholder:"例) 山田" %>
+        <%= f.text_field :first_name, class:"input-name", id:"user_first_name", placeholder:"例) 太郎" %>
       </div>
     </div>
 
@@ -79,8 +79,8 @@
         <span class="indispensable">必須</span>
       </div> 
       <div class='input-name-wrap'>
-        <%= f.text_area :last_name_kana, class:"input-name", id:"user_last_name_kana", placeholder:"例) ヤマダ" %>
-        <%= f.text_area :first_name_kana, class:"input-name", id:"user_first_name_kana", placeholder:"例) タロウ" %>
+        <%= f.text_field :last_name_kana, class:"input-name", id:"user_last_name_kana", placeholder:"例) ヤマダ" %>
+        <%= f.text_field :first_name_kana, class:"input-name", id:"user_first_name_kana", placeholder:"例) タロウ" %>
       </div>
     </div> 
 
@@ -98,7 +98,7 @@
         <label class="form-text">年齢</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :age, class:"input-default", id:"user_age", placeholder:"例) 30or30代", maxlength:"20" %>
+      <%= f.text_field :age, class:"input-default", id:"user_age", placeholder:"例) 30or30代", maxlength:"20" %>
     </div>
 
     <div class="form-group">
@@ -106,7 +106,7 @@
         <label class="form-text">学校</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :school, class:"input-default", id:"user_school", placeholder:"例)〇〇学校", maxlength:"40" %>
+      <%= f.text_field :school, class:"input-default", id:"user_school", placeholder:"例)〇〇学校", maxlength:"40" %>
     </div>
 
     <div class="form-group">
@@ -114,7 +114,7 @@
         <label class="form-text">担当教科</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :subject, class:"input-default", id:"user_subject", placeholder:"例)国語", maxlength:"40" %>
+      <%= f.text_field :subject, class:"input-default", id:"user_subject", placeholder:"例)国語", maxlength:"40" %>
     </div>
 
     <div class="form-group">
@@ -122,15 +122,15 @@
         <label class="form-text">部活動</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :subject, class:"input-default", id:"user_club", placeholder:"例)〇〇部", maxlength:"40" %>
+      <%= f.text_field :club, class:"input-default", id:"user_club", placeholder:"例)〇〇部", maxlength:"40" %>
     </div>
 
     <div class="form-group">
       <div class='form-text-wrap'>
-        <label class="form-text">一言</label>
+        <label class="form-text">ひとこと！</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :a_word, class:"input-default", id:"user_a_word", maxlength:"40" %>
+      <%= f.text_area :introduce, class:"input-default", id:"user_introduce", placeholder:"例)よろしくお願いします！", maxlength:"40" %>
     </div>
 
     <div class="actions">
