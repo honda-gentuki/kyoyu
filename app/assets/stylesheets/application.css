@@ -33,3 +33,11 @@
 .breadcrumbs a{
   text-decoration: none;
 }
+
+.notification-main a:visited{
+  color: #1b00ee;
+}
+
+.notification-main a{
+  text-decoration: none;
+}

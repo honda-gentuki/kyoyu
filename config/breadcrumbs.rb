@@ -22,6 +22,11 @@ crumb :new_post do
   parent :root
 end
 
+crumb :notifications do
+  link "通知", notifications_path
+  parent :root
+end
+
 crumb :post_show do |post|
   link "投稿詳細", post_path(post)
   parent :root
