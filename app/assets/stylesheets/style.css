@@ -97,6 +97,11 @@
   margin-bottom: 28px;
 }
 
+.page-heading-show{
+  font-size: 30px;
+  padding-right: 450px;
+}
+
 .card__wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -185,11 +190,8 @@
   font-weight: bold;
 }
 
-.post__manage{
-  display: flex;
-  justify-content: center;
-  padding-top: 16px;
-}
+
+
 .post__btn{
   display: block;
   padding: 0.4em 1.6em;
@@ -202,6 +204,7 @@
   transition: 0.4s ease;
   margin: 0 4px;
 }
+
 .post__btn:hover{
   color: #fff;
   background: #999;
@@ -239,7 +242,6 @@
   margin-bottom: 32px;
   width: 100%;
   height: 430px;
-  border-radius: 5px;
 }
 
 .table__col1{
@@ -337,7 +339,7 @@
   text-decoration: none;
 }
 
-/* 新規登録 */
+/* 新規登録・ユーザー情報編集*/
 .registration-main {
   width: 100%;
   min-width: 800px;
@@ -464,6 +466,7 @@
   width: 250px;
   object-fit: cover;
   border-radius: 150px;
+  border: 1px solid #ddd;
   padding: 10px;
   background-color: #fff;
 }
@@ -481,5 +484,16 @@
 }
 
 .table{
-  height: 400px;
+  height: 410px;
+
+}
+
+.table tbody{
+  box-shadow: 15px 20px 20px #ccc;
+}
+
+.flex-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

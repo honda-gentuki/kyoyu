@@ -93,21 +93,21 @@
       </p>
     </div>
 
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">年齢</label>
-          <span class="indispensable">任意</span>
-        </div>
-        <%= f.select :age, [["",""], ["20代","20"], ["30代","30"], ["40代","40"], ["50代","50"], ["60代","60"], ["70代以上","70"] ], {}, class:"input-name", id:"user_age" %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">年齢</label>
+        <span class="indispensable">任意</span>
       </div>
+      <%= f.select :age, [["",""], ["20代","20"], ["30代","30"], ["40代","40"], ["50代","50"], ["60代","60"], ["70代以上","70"] ], {}, class:"input-name", id:"user_age" %>
+    </div>
 
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">性別</label>
-          <span class="indispensable">任意</span>
-        </div>
-        <%= f.select :sex, [["",""], ["女性","女性"], ["男性","男性"]], {}, class:"input-name", id:"user_sex" %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">性別</label>
+        <span class="indispensable">任意</span>
       </div>
+      <%= f.select :sex, [["",""], ["女性","女性"], ["男性","男性"]], {}, class:"input-name", id:"user_sex" %>
+    </div>
 
     <div class="form-group">
       <div class='form-text-wrap'>
@@ -138,13 +138,14 @@
         <label class="form-text">自己紹介</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :introduce, class:"input-default", id:"user_introduce", placeholder:"例)よろしくお願いします！", maxlength:"40" %>
+      <%= f.text_area :introduce, class:"input-default", id:"user_introduce", placeholder:"例)よろしくお願いします！", maxlength:"255" %>
     </div>
 
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">プッロフィール写真</label>
         <span class="indispensable">任意</span>
+        
         <div class="form-image">
           <% if @user.image? %>
             <%= image_tag @user.image.url %>

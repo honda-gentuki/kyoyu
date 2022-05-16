@@ -2,9 +2,15 @@
 <div class="main">
   <div class="inner">
     <div class="user__wrapper">
-      <h2 class="page-heading">
-        <%= "#{@user.nickname}先生のプロフィール"%>
-      </h2>
+      <div class="flex-row">
+        <h2 class="page-heading-show">
+          <%= "#{@user.nickname}先生のプロフィール"%>
+        </h2>
+        <div class="actions">
+          <%= link_to "チャット", chat_path, class: :form__btn%>
+          <i class="bi bi-envelope"></i>
+        </div>
+      </div>
 
       <div class="user-profile">
         <div class="profile-left">
@@ -47,8 +53,8 @@
           <table class="table">
             <tbody>
               <tr>
-                <th class="table__col1">学校名</th>
-                <td class="table__col2"><%= @user.school %></td>
+                <th class="table__col1", style="border-radius: 5px 0 0 0;">学校名</th>
+                <td class="table__col2", style="border-radius: 0 5px 0 0;"><%= @user.school %></td>
               </tr>
               <tr>
                 <th class="table__col1">担当教科</th>
@@ -59,20 +65,16 @@
                 <td class="table__col2"><%= @user.club %></td>
               </tr>
               <tr>
-                <th class="table__col3">自己紹介</th>
-                <td class="table__col4"><%= @user.introduce %></td>
+                <th class="table__col3", style="border-radius: 0 0 0 5px;">自己紹介</th>
+                <td class="table__col4", style="border-radius: 0 0 5px 0;"><%= @user.introduce %></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div class="post__manage">
-        <%= link_to "チャット", chat_path, class: :post__btn%>
-      </div>
       <% if user_signed_in? && current_user.id == @user.id %>
-        <div class="post__manage">
-          <%= link_to "編集する", edit_user_registration_path, class: :post__btn%>
+        <div class="actions">
           <%= link_to '退会', user_registration_path, class: :post__btn, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" } %>
         </div>
       <% end %>
