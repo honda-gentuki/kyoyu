@@ -12,10 +12,12 @@
 | first_name_kana    | string | null: false               |
 | last_name_kana     | string | null: false               |
 | age                | string |                           |
+| sex                | string |                           |
 | school             | string |                           |
 | subject            | string |                           |
 | club               | string |                           |
-| a_word             | text   |                           |
+| introduce          | text   |                           |
+| image              | string |                           |
 
 ### Association
 
