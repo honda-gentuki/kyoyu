@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :reads, dependent: :destroy
 
   mount_uploader :image, ImageUploader
-  
+
   def already_liked?(post)
     likes.exists?(post_id: post.id)
   end
@@ -82,5 +82,4 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
 end
