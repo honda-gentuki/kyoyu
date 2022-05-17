@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment_post = @comment.post
     if @comment.save
-      #通知の作成
+      # 通知の作成
       @comment_post.create_notification_comment!(current_user, @comment.id)
       render :index
     end

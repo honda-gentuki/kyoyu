@@ -8,7 +8,7 @@ crumb :posts_pagination do |page|
 end
 
 crumb :user_new do
-  link "ユーザー登録", new_user_registration_path
+  link "新規登録", new_user_registration_path
   parent :root
 end
 
@@ -19,6 +19,11 @@ end
 
 crumb :new_post do
   link "新規投稿", new_post_path
+  parent :root
+end
+
+crumb :notifications do
+  link "通知", notifications_path
   parent :root
 end
 
@@ -33,12 +38,12 @@ crumb :post_edit do |post|
 end
 
 crumb :user_show do |user|
-  link "#{user.nickname}さんの詳細", user_path(user)
+  link "#{user.nickname}先生のプロフィール", user_path(user)
   parent :root
 end
 
 crumb :user_edit do |user|
-  link "#{user.nickname}さんの編集"
+  link "#{user.nickname}先生の編集"
   parent :user_show, user
 end
 

@@ -17,3 +17,51 @@
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+.main a{
+  text-decoration: none;
+}
+
+.main a:visited {
+  color: #1b00ee;
+}
+
+.breadcrumbs a{
+  text-decoration: none;
+}
+
+.breadcrumbs a:visited {
+  color: #1b00ee;
+}
+
+.notification-main a{
+  text-decoration: none;
+}
+
+.notification-main a:visited{
+  color: #1b00ee;
+}
+
+.follow-left {
+  text-decoration: none;
+}
+
+.follow-left a:visited{
+  color: #1b00ee;
+}
+
+.info-introduce a{
+  text-decoration: none;
+}
+
+.info-introduce {
+  color: #1b00ee;
+}
+
+.actions a{
+  text-decoration: none; 
+}
+
+.actions a:visited{
+  color: #fff;
+}

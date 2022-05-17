@@ -152,10 +152,12 @@ ActiveRecord::Schema.define(version: 2022_05_14_124408) do
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
     t.string "age"
+    t.string "sex"
     t.string "school"
     t.string "subject"
     t.string "club"
-    t.text "a_word"
+    t.text "introduce"
+    t.string "image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

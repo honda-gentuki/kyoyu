@@ -1,8 +1,8 @@
-post_img {
-  height: 300px;
-  width: 300px;
-  object-fit: contain;
+.preview-image {
+  height: 100px;
+  object-fit: cover;
 }
+
 
 .other-images {
   display: flex;

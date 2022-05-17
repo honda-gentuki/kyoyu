@@ -1,12 +1,13 @@
 <% visiter = notification.visiter %>
 <% post = notification.post %>
-
-<div class="user-view clearfix ">
+<div class="notification-main">
   <%= link_to user_path(notification.visiter) do %>
   <% end %>
   <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
   <br>
-  <% if !@comment.nil? %>
-    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
-  <% end %>
+  <div class=notification-comment>
+    <% if !@comment.nil? %>
+      <p class="moderate-font text-center" style="color: #C0C0C0;"><%= "コメント:#{@comment}" %></p>
+    <% end %>
+  </div>
 </div>
