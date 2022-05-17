@@ -7,31 +7,31 @@
       </h1>
     </div>
 
-    <div>
       <% @users.each do |user| %>
         <%= link_to user_path(user) do %>
         <div class="follow-header">
-          <div class="user-image">
-            <% if user.image? %>
-              <%= image_tag user.image.url %>
-            <% else %>
-              <%= image_tag("/images/no-image.png") %>
-            <% end %>
-          </div>
-          <div class="user-info">
-            <div class="info-nickname">
-              <%= user.nickname %>
+          <div>
+            <div class="user-image">
+              <% if user.image? %>
+                <%= image_tag user.image.url %>
+              <% else %>
+                <%= image_tag("/images/no-image.png") %>
+              <% end %>
             </div>
-            <div>
-            </div> 
-            <div class="info-introduce">
-              <%= user.introduce %>
+            <div class="user-info">
+              <div class="info-nickname">
+                <%= user.nickname %>
+              </div>
+
+              <div class="info-introduce">
+                <%= user.introduce %>
+              </div>
             </div>
           </div>
+
         </div>
         <% end %>
       <% end %>
-    </div>
   </div>
 </div>
 

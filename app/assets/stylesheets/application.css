@@ -23,7 +23,7 @@
 }
 
 .main a:visited {
-  color: black;
+  color: #1b00ee;
 }
 
 .breadcrumbs a{
@@ -31,7 +31,7 @@
 }
 
 .breadcrumbs a:visited {
-  color: black;
+  color: #1b00ee;
 }
 
 .notification-main a{
@@ -39,21 +39,29 @@
 }
 
 .notification-main a:visited{
-  color: black;
+  color: #1b00ee;
 }
 
-.info-nickname a{
+.follow-left {
   text-decoration: none;
 }
 
-.info-nickname a:visited{
-  color: black;
+.follow-left a:visited{
+  color: #1b00ee;
 }
 
 .info-introduce a{
   text-decoration: none;
 }
 
-.info-introduce a:visited{
-  color: black;
+.info-introduce {
+  color: #1b00ee;
+}
+
+.actions a{
+  text-decoration: none; 
+}
+
+.actions a:visited{
+  color: #fff;
 }

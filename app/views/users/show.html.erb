@@ -3,11 +3,20 @@
   <div class="inner">
     <div class="user__wrapper">
       <div class="flex-row">
-        <h2 class="page-heading-show">
-          <%= "#{@user.nickname}先生のプロフィール"%>
-        </h2>
-        <div class="actions">
-          <%= link_to "チャット", chat_path, class: :form__btn%>
+        <div class="h2">
+          <h2 class="page-heading-show">
+            <%= "#{@user.nickname}先生のプロフィール"%>
+          </h2>
+        </div>
+        <div class="action">
+          <div class="actions">
+            <%= link_to "チャット", chat_path, class: :form__btn%>
+          </div>
+          <div class="actions">
+            <% if user_signed_in? && current_user.id == @user.id %>
+              <%= link_to '退会', user_registration_path, class: :form__btn, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" } %>
+            <% end %>
+          </div>
         </div>
       </div>
 
@@ -72,11 +81,6 @@
         </div>
       </div>
 
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <div class="actions">
-          <%= link_to '退会', user_registration_path, class: :post__btn, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" } %>
-        </div>
-      <% end %>
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生の投稿"%>
       </h2>
