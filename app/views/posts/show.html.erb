@@ -1,90 +1,90 @@
 <% breadcrumb :post_show, @post %>
-<main class="main">
-  <div class="inner">
-    <div class="post__wrapper">
-      <p class="post__hedding">
-        <%= @post.unit %>
-      </p>
-      <%= link_to "by #{@post.user.nickname}", user_path(@post.user.id), class: :post__user %>
-      <% if @post.images.present? %>
-        <div class="post__image">
-          <%= image_tag @post.images[0].variant(resize: '500x500') %>
-          <div class="other-images">
-            <% @post.images[1..-1].each do |image| %>
-              <div class="other-image">
-                <%= image_tag image %>
-              </div>
-            <%end%>
-          </div>
+
+<div class="registration-main">
+  <div class="form-wrap">
+    <p class="post__hedding">
+      <%= @post.unit %>
+    </p>
+    <%= link_to "by #{@post.user.nickname}", user_path(@post.user.id), class: :post__user %>
+    <% if @post.images.present? %>
+      <div class="post__image">
+        <%= image_tag @post.images[0]%>
+        <div class="other-images">
+          <% @post.images[1..-1].each do |image| %>
+            <div class="other-image">
+              <%= image_tag image %>
+            </div>
+          <%end%>
         </div>
-      <% end %>
-      <div class="post__body">
-        <div class="post__detail">
-          <p class="detail__title">教科名</p>
-          <p class="detail__message">
-            <%= @post.subject %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">科目名</p>
-          <p class="detail__message">
-            <%= @post.course %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">単元名</p>
-          <p class="detail__message">
-            <%= @post.unit %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">教材名</p>
-          <p class="detail__message">
-            <%= @post.teaching_materials %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">導入</p>
-          <p class="detail__message">
-            <%= @post.introduction %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">導入の時間</p>
-          <p class="detail__message">
-            <%= @post.introduction_time %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">展開</p>
-          <p class="detail__message">
-            <%= @post.development %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">展開の時間</p>
-          <p class="detail__message">
-            <%= @post.development_time %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">まとめ</p>
-          <p class="detail__message">
-            <%= @post.summary %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">まとめの時間</p>
-          <p class="detail__message">
-            <%= @post.summary_time %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">タグ</p>
-          <p class="detail__message">
-            <%= @post.tags&.first&.tag_name %>
-          </p>
-        </div>
+      </div>
+    <% end %>
+    <div class="post__body">
+      <div class="post__detail">
+        <p class="detail__title">教科名</p>
+        <p class="detail__message">
+          <%= @post.subject %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">科目名</p>
+        <p class="detail__message">
+          <%= @post.course %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">単元名</p>
+        <p class="detail__message">
+          <%= @post.unit %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">教材名</p>
+        <p class="detail__message">
+          <%= @post.teaching_materials %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">導入</p>
+        <p class="detail__message">
+          <%= @post.introduction %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">導入の時間</p>
+        <p class="detail__message">
+          <%= @post.introduction_time %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">展開</p>
+        <p class="detail__message">
+          <%= @post.development %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">展開の時間</p>
+        <p class="detail__message">
+          <%= @post.development_time %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">まとめ</p>
+        <p class="detail__message">
+          <%= @post.summary %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">まとめの時間</p>
+        <p class="detail__message">
+          <%= @post.summary_time %>
+        </p>
+      </div>
+      <div class="post__detail">
+        <p class="detail__title">タグ</p>
+        <p class="detail__message">
+          <%= @post.tags&.first&.tag_name %>
+        </p>
+      </div>
       <% if user_signed_in? && current_user.id == @post.user_id %>
         <div class="post__manage">
           <%= link_to "編集する", edit_post_path, class: :post__btn%>
@@ -107,20 +107,20 @@
               <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
           <% end %> 
         </div>
-      </div>  
-      <div id="comments">
-        <h4>＜コメント一覧＞</h4>
-        <ul class="comments_lists">
-          <% @post.comments.each do |comment| %>
-            <div class="comment">
-              <li class="comment_list">
-                <%= "・#{comment.content}" %>
-                <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
-              </li>
-            </div>
-          <% end %>
-        </ul>
+        <div id="comments">
+          <h4>＜コメント一覧＞</h4>
+          <ul class="comments_lists">
+            <% @post.comments.each do |comment| %>
+              <div class="comment">
+                <li class="comment_list">
+                  <%= "・#{comment.content}" %>
+                  <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</main>
+</div>
