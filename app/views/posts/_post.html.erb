@@ -1,14 +1,37 @@
 <div class="card">
   <div class="card__body">
-    <%= link_to post.unit, post_path(post.id), class: :card__title%>
-    <p class="card__summary">
-      <%= post.course %>
-    </p>
-    <%= link_to image_tag(post.images[0].variant(resize: '300x300'), class: :card__img ), post_path(post.id) if post.images.attached? %>
-    <div id="like-btn-<%= post.id %>">
-      <%= render 'likes/like', post: post %>
+    <div class="card__header">
+      <div class="user-image">
+        <% if post.user.image? %>
+          <%= image_tag post.user.image.url %>
+        <% else %>
+          <%= image_tag("/images/no-image.png") %>
+        <% end %>
+      </div>
+      <div class="user__name">
+        <%= link_to "#{post.user.nickname}先生", user_path(post.user.id) %>
+      </div>
+      <div class="post-edit">
+        <%= link_to ("edit_post_path") do %>
+          <i class="bi bi-gear"></i>
+        <% end %> 
+      </div>
     </div>
-    <i class="bi bi-chat-dots"></i>
-    <%= link_to "by#{post.user.nickname}先生", user_path(post.user.id), class: :card__user %>
+    <div class="card-img">
+      <%= link_to image_tag(post.images[0], class: :card__img ), post_path(post.id) if post.images.attached? %>
+    </div>
+    <div class="card__footer">
+      <div class=card__title>
+        <%= link_to post.unit, post_path(post.id), class: :card__title%>
+      </div>
+      <div class="card_sub_title">
+        <%= post.course %>
+      </div>
+    </div>
+    <div class="like-btn">
+      <div id="like-btn-<%= post.id %>">
+        <%= render 'likes/like', post: post %>
+      </div>
+    </div>
   </div>
 </div>
