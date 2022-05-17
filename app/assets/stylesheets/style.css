@@ -25,22 +25,36 @@
   cursor: pointer;
 }
 
-.form-image img{
-  height: auto;
-  width: 200px;
-  border: 1px solid black;
-  border-radius: 5px;
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.form img{
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  border-radius: 150px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  margin-right: 15px;
 }
 
 /* メイン */
 .main {
+  height: 100%;
+  width: 100%;
+  min-width: 800px;
+  min-height: 100vh;
   background-color: #f4eade;
-  height: 100vh;
 }
 
 .breadcrumbs{
   background-color: #f4eade;
-  padding: 30px 0 10px 100px;
+  padding: 30px 0 30px 100px;
 }
 
 .input-search {
@@ -60,27 +74,9 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
-.search__btn{
-  padding: 0.4em 1.6em;
-  height: 45px;
-  font-size: 0.8em;
-  color: #fff;
-  text-decoration: none;
-  user-select: none;
-  background-color: #2988BC;
-  border: 1px #2988BC solid;
-  border-radius: 3px;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
-  transition: 0.2s ease;
-}
-
-
-.search__btn:hover {
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-}
 
 .greeting{
   padding-top: 48px;
@@ -112,10 +108,10 @@
 
 .card__body{
   background-color: #fff;
-  padding:30px;
   border-radius: 15px;
   height: 400px;
   width: auto;
+  box-shadow:  5px 5px 5px #ccc;
 }
 
 .card {
@@ -123,19 +119,33 @@
   margin-bottom: 40px;
 }
 
+.user-image img{ 
+  height: 57px;
+  width: 57px;
+  object-fit: cover;
+  border-radius: 150px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  margin-right: 30px;
+}
+
+.user__name{
+  margin-right: 80px;
+}
+
 .card__img {
   margin-bottom: 10px;
-  height: 180px;
-  width: auto;
+  height: 200px;
+  width: 324px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
 }
 
 .card__title {
   display: flex;
   font-size: 20px;
-  margin-bottom: 8px;
   font-weight: bold;
   text-decoration: none;
-  
 }
 
 .card__summary {
@@ -143,22 +153,37 @@
   margin-bottom: 10px;
 }
 
-.card__user {
+.card__header {
   display: block;
-  font-size: 12px;
+  font-size: 16px;
   color: #999;
-  text-align: right;
-  text-decoration: underline;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card__footer{
+  display: flex;
+  align-items: center;
+  padding: 0 0 10px 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card__title{
+  margin-right: 16px;
+}
+
+.like-btn{
+  margin: 20px;
 }
 
 /* 詳細ページ */
 
-
-.post__wrapper{
-  min-height: calc(100vh - 161px);
-}
-
-.post__hedding{
+.post__heading{
   font-size: 24px;
   font-weight: bold;
   text-align: center;
@@ -190,8 +215,6 @@
   font-weight: bold;
 }
 
-
-
 .post__btn{
   display: block;
   padding: 0.4em 1.6em;
@@ -212,7 +235,7 @@
 
 .post__comments{
   background-color: #f6f6f6;
-  padding: 20px;
+  padding: 20px 0 0 0 ;
   margin: 28px 0 40px 0;
 }
 
@@ -341,10 +364,10 @@
 
 /* 新規登録・ユーザー情報編集*/
 .registration-main {
+  height: 100%;
   width: 100%;
   min-width: 800px;
   min-height: 100vh;
-  height: 100%;
   background-color: #f4eade;
   display: flex;
   justify-content: center;
@@ -354,7 +377,7 @@
   width: 50%;
   height: 100%;
   background-color: white;
-  margin: 20px 0;
+  margin: 20px 0 40px 0;
 }
 
 .form-header {
@@ -371,7 +394,7 @@
 }
 
 .form-group {
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -402,6 +425,37 @@
   background: #fff;
   font-size: 16px;
   resize: none;
+}
+
+.form-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-class {
+  width: 100%;
+  margin-top: 5px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+#post_introduction.input-class{
+  height: 100px;
+}
+
+#post_development.input-class{
+  height: 300px;
+}
+
+#post_summary.input-class{
+  height: 100px;
 }
 
 .info-text {
@@ -459,6 +513,8 @@
   border-bottom: 1px solid #ddd;
   background: #f2f2f2;
   border-radius: 5px 5px 0 0 ;
+  display: flex;
+
 }
 
 .card-image img{
@@ -467,7 +523,6 @@
   object-fit: cover;
   border-radius: 150px;
   border: 1px solid #ddd;
-  padding: 10px;
   background-color: #fff;
 }
 
@@ -485,7 +540,6 @@
 
 .table{
   height: 410px;
-
 }
 
 .table tbody{
@@ -494,6 +548,27 @@
 
 .flex-row{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
+
+/* ユーザー情報編集 */
+#user_introduce.input-class{
+  height: 250px;
+}
+
+/* フォロワー */
+.follow-header{
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.user-image{
+  padding-bottom: 115px;
+}
+
+.info-nickname{
+  margin-bottom: 15px;
+}
+

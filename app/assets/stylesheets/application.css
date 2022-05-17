@@ -18,26 +18,42 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-.main a:visited {
-  color: #1b00ee;
-}
-
 .main a{
   text-decoration: none;
 }
 
-.breadcrumbs a:visited {
-  color: #1b00ee;
+.main a:visited {
+  color: black;
 }
 
 .breadcrumbs a{
   text-decoration: none;
 }
 
-.notification-main a:visited{
-  color: #1b00ee;
+.breadcrumbs a:visited {
+  color: black;
 }
 
 .notification-main a{
   text-decoration: none;
+}
+
+.notification-main a:visited{
+  color: black;
+}
+
+.info-nickname a{
+  text-decoration: none;
+}
+
+.info-nickname a:visited{
+  color: black;
+}
+
+.info-introduce a{
+  text-decoration: none;
+}
+
+.info-introduce a:visited{
+  color: black;
 }
