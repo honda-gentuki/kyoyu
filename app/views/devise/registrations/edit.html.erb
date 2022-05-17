@@ -25,21 +25,22 @@
       <%= f.text_field :nickname, class:"input-default", id:"user_nickname", placeholder:"例) 国語太郎", maxlength:"40" %>
     </div>
 
-      <div class="form-group">
+    <div class="form-row">
+      <div>
         <div class='form-text-wrap'>
           <label class="form-text">年齢</label>
           <span class="indispensable">任意</span>
         </div>
         <%= f.select :age, [["",""], ["20代","20"], ["30代","30"], ["40代","40"], ["50代","50"], ["60代","60"], ["70代以上","70"] ], {}, class:"input-name", id:"user_age" %>
       </div>
-
-      <div class="form-group">
+      <div>
         <div class='form-text-wrap'>
           <label class="form-text">性別</label>
           <span class="indispensable">任意</span>
         </div>
         <%= f.select :sex, [["",""], ["女性","女性"], ["男性","男性"]], {}, class:"input-name", id:"user_sex" %>
       </div>
+    </div>
 
     <div class="form-group">
       <div class='form-text-wrap'>
@@ -56,7 +57,7 @@
       </div>
       <%= f.text_field :subject, class:"input-default", id:"user_subject", placeholder:"例)国語", maxlength:"40" %>
     </div>
-
+    
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">部活動</label>
@@ -70,21 +71,21 @@
         <label class="form-text">自己紹介</label>
         <span class="indispensable">任意</span>
       </div>
-      <%= f.text_area :introduce, class:"input-default", id:"user_introduce", placeholder:"例)よろしくお願いします！", maxlength:"40" %>
+      <%= f.text_area :introduce, class:"input-class", id:"user_introduce", placeholder:"例)よろしくお願いします！", maxlength:"255" %>
     </div>
-
 
     <div class="form-group">
       <div class='form-text-wrap'>
-        <label class="form-text">プッロフィール写真</label>
+        <label class="form-text">プロフィール写真</label>
         <span class="indispensable">任意</span>
-        <div class="form-image">
+
+        <div class="form">
           <% if @user.image? %>
             <%= image_tag @user.image.url %>
           <% else %>
-          <%= image_tag("/images/no-image.png") %>
+            <%= image_tag("/images/no-image.png") %>
           <% end %>
-          <%= f.file_field :image, class:"input-default", id:"user_image" %>
+          <%= f.file_field :image, id:"user_image" %>
         </div>
       </div>
     </div>
@@ -92,6 +93,5 @@
     <div class="actions">
       <%= f.submit "更新", class: :form__btn %>
     </div> 
-    <%=link_to '戻る', :back, class:'back-btn' %>
   </div>
 <% end %>
