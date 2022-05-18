@@ -1,115 +1,125 @@
 <% breadcrumb :post_show, @post %>
 
 <div class="registration-main">
-  <div class="form-wrap">
-    <p class="post__hedding">
-      <%= @post.unit %>
-    </p>
-    <%= link_to "by #{@post.user.nickname}", user_path(@post.user.id), class: :post__user %>
-    <% if @post.images.present? %>
-      <div class="post__image">
-        <%= image_tag @post.images[0]%>
-        <div class="other-images">
-          <% @post.images[1..-1].each do |image| %>
-            <div class="other-image">
-              <%= image_tag image %>
-            </div>
-          <%end%>
-        </div>
-      </div>
-    <% end %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        投稿内容
+      </h1>
+    </div>
 
-    <div id="box">
-      <div id="images">
-        <div class="image1"></div>
-        <div class="image2"></div>
-        <div class="image3"></div>
-        <div class="image4"></div>
-        <div class="image5"></div>
+    <div class="card__header">
+      <div class="user-image">
+        <% if @post.user.image? %>
+          <%= image_tag @post.user.image.url %>
+        <% else %>
+          <%= image_tag("/images/no-image.png") %>
+        <% end %>
+      </div>
+      <div class="user__name">
+        <%= link_to "#{@post.user.nickname}先生", user_path(@post.user.id) %>
+      </div>
+      <div class="post-icon">
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+          <div class="gear-icon">
+            <%= link_to edit_post_path do %>
+              <i class="bi bi-gear"></i>
+            <% end %> 
+          </div>
+          <div class="trush-icon">
+            <%= link_to post_path(@post), method: :delete, data: { confirm: "投稿を削除してもよろしいですか？" } do %>
+              <i class="bi bi-trash"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
     
-    <div class="post__body">
+    <div class="post-title">
       <div class="post__detail">
-        <p class="detail__title">教科名</p>
-        <p class="detail__message">
-          <%= @post.subject %>
-        </p>
+        <div class="detail__title"><%= @post.unit %></div>
       </div>
+    </div>
+    
+     <table class="table_post">
+      <tbody>
+        <tr>
+          <th class="table_col1">教科名</th>
+          <td class="table_col2"><%= @post.subject %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">科目名</th>
+          <td class="table_col2"><%= @post.course %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">教材名</th>
+          <td class="table_col2"><%= @post.teaching_materials %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">タグ</th>
+          <td class="table_col2"><%= @post.tags&.first&.tag_name %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="post-title">
       <div class="post__detail">
-        <p class="detail__title">科目名</p>
-        <p class="detail__message">
-          <%= @post.course %>
-        </p>
+        <div class="detail__title">板書・スライド・添付資料</div>
       </div>
+    </div>
+
+    <div id="box">
+      <div id="images">
+        <% if @post.images.present? %>
+          <div class="post__image">
+            <%= image_tag @post.images[0]%>
+            <div class="other-images">
+              <% @post.images[1..-1].each do |image| %>
+                <div class="other-image">
+                  <%= image_tag image %>
+                </div>
+              <%end%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="post-title">
       <div class="post__detail">
-        <p class="detail__title">単元名</p>
-        <p class="detail__message">
-          <%= @post.unit %>
-        </p>
+        <div class="detail__title">授業内容</div>
       </div>
+    </div>
+
+    <table class="table_class">
+      <tbody>
+        <tr>
+          <th class="table_col5">導入<%= @post.introduction_time %>分</th>
+          <td class="table_col6"><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th class="table_col7">展開<%= @post.development_time %>分</th>
+          <td class="table_col8"><%= @post.development %></td>
+        </tr>
+        <tr>
+          <th class="table_col5">まとめ<%= @post.summary_time %>分</th>
+          <td class="table_col6"><%= @post.summary %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="post-title">
       <div class="post__detail">
-        <p class="detail__title">教材名</p>
-        <p class="detail__message">
-          <%= @post.teaching_materials %>
-        </p>
+        <div class="detail__title">コメント</div>
       </div>
-      <div class="post__detail">
-        <p class="detail__title">導入</p>
-        <p class="detail__message">
-          <%= @post.introduction %>
-        </p>
-      </div>
-      <div class="post__detail">
-        <p class="detail__title">導入の時間</p>
-        <p class="detail__message">
-          <%= @post.introduction_time %>
-        </p>
-      </div>
-      <div class="post__detail">
-        <p class="detail__title">展開</p>
-        <p class="detail__message">
-          <%= @post.development %>
-        </p>
-      </div>
-      <div class="post__detail">
-        <p class="detail__title">展開の時間</p>
-        <p class="detail__message">
-          <%= @post.development_time %>
-        </p>
-      </div>
-      <div class="post__detail">
-        <p class="detail__title">まとめ</p>
-        <p class="detail__message">
-          <%= @post.summary %>
-        </p>
-      </div>
-      <div class="post__detail">
-        <p class="detail__title">まとめの時間</p>
-        <p class="detail__message">
-          <%= @post.summary_time %>
-        </p>
-      </div>
-      <div class="post__detail">
-        <p class="detail__title">タグ</p>
-        <p class="detail__message">
-          <%= @post.tags&.first&.tag_name %>
-        </p>
-      </div>
-      <% if user_signed_in? && current_user.id == @post.user_id %>
-        <div class="post__manage">
-          <%= link_to "編集する", edit_post_path, class: :post__btn%>
-          <%= link_to "削除する", post_path, class: :post__btn, method: :delete %>
-        </div>
-      <% end %>
+    </div>
+    
+    <div class="comment-main">
       <div class="post__comments">
         <div class="comment-form">
           <% if user_signed_in? %>
-            <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
-              <div class="field">
-                <%= f.label :content, "コメント" %><br />
-                <%= f.text_field :content, id:"comment_content" %>
-              </div>
+            <%= form_with model: [@post, @comment] do |f| %>
+              <%= f.text_area :content, placeholder:"コメントを入力してください", class:"input-class"%>
               <div class="actions">
                 <%= f.submit "送信する", class: :form__btn  %>
               </div>
@@ -118,18 +128,34 @@
               <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
           <% end %> 
         </div>
+
         <div id="comments">
-          <h4>＜コメント一覧＞</h4>
-          <ul class="comments_lists">
+          <div class="comments">コメント一覧</div>
+          <div class="comments_lists">
             <% @post.comments.each do |comment| %>
               <div class="comment">
-                <li class="comment_list">
-                  <%= "・#{comment.content}" %>
-                  <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
-                </li>
+                <div class="comment_list">
+                  <div class="comment-card">
+                    <div class="user-image">
+                      <% if @post.user.image? %>
+                        <%= image_tag @post.user.image.url %>
+                      <% else %>
+                        <%= image_tag("/images/no-image.png") %>
+                      <% end %>
+                    </div>
+                    <div class="user_right">
+                      <div class="user_nickname">
+                      <%= @post.user.nickname %>
+                      </div>
+                      <div class="comment-content">
+                        <%= "#{comment.content}" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             <% end %>
-          </ul>
+          </div>
         </div>
       </div>
     </div>
