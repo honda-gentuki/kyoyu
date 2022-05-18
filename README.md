@@ -25,11 +25,13 @@
 - has_many :comments
 - has_many :likes
 - has_many :follower
-- has_many :followed
+- has_many :following
 - has_many :room_users
 - has_many :rooms, through: :room_users
 - has_many :chats
 - has_many :reads
+- has_many :visiter
+- has_many :visited
 
 
 ## posts テーブル
@@ -40,7 +42,8 @@
 | course             | string     | null: false                    |
 | unit               | string     | null: false                    |
 | teaching_materials | string     | null: false                    |
-| introduction       | text       |                                |
+| introduction       | string     |                                |
+| text               | string     |                                |
 | introduction_time  | integer    |                                |
 | development        | text       |                                |
 | development_time   | integer    |                                |
@@ -52,11 +55,11 @@
 
 - has_many :comments
 - has_many :likes
-- belongs_to :user
 - has_many :post_tags
 - has_many :tags, through: :post_tags
 - has_many :notifications
 - has_many :reads
+- belongs_to :user
 
 
 ## comments テーブル
@@ -69,9 +72,10 @@
 
 ### Association
 
+- has_many :notifications
 - belongs_to :user
 - belongs_to :post
-- has_many :notifications
+
 
 ## likes テーブル
 
@@ -85,6 +89,7 @@
 - belongs_to :user
 - belongs_to :post
 
+
 ## relationships テーブル
 
 | Column    | Type       | Options                        |
@@ -97,6 +102,7 @@
 - belongs_to :follower
 - belongs_to :following
 
+
 ## rooms テーブル
 
 | Column | Type   | Options |
@@ -108,6 +114,7 @@
 - has_many :users, through: :room_users
 - has_many :chats
 
+
 ## room_users テーブル
 
 | Column | Type       | Options                        |
@@ -117,8 +124,8 @@
 
 ### Association
 
-- belongs_to :room
 - belongs_to :user
+- belongs_to :room
 
 ## chats テーブル
 
@@ -163,7 +170,6 @@
 | visiter     | integer    | null: false, foreign_key: true |
 | visited     | integer    | null: false, foreign_key: true |
 | post_id     | integer    |                                |
-| comment_id  | integer    |                                |
 | comment_id  | integer    |                                |
 | action      | string     | null: false                    |
 | checked     | boolean    | null: false                    |
