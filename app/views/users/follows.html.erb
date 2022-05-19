@@ -3,35 +3,32 @@
   <div class='form-wrap'>
     <div class='form-header'>
       <h1 class='form-header-text'>
-        フォロワー
+        フォロー
       </h1>
     </div>
-
+    <div>
       <% @users.each do |user| %>
         <%= link_to user_path(user) do %>
         <div class="follow-header">
-          <div>
-            <div class="user-image">
-              <% if user.image? %>
-                <%= image_tag user.image.url %>
-              <% else %>
-                <%= image_tag("/images/no-image.png") %>
-              <% end %>
+          <div class="user-image">
+            <% if user.image? %>
+              <%= image_tag user.image.url %>
+            <% else %>
+              <%= image_tag("/images/no-image.png") %>
+            <% end %>
+          </div>
+          <div class="follow-right">
+            <div class="user-nickname">
+            <%= "#{user.nickname}先生" %>
             </div>
-            <div class="user-info">
-              <div class="info-nickname">
-                <%= user.nickname %>
-              </div>
-
-              <div class="info-introduce">
-                <%= user.introduce %>
-              </div>
+            <div class="user-introduce">
+            <%= user.introduce %>
             </div>
           </div>
-
         </div>
         <% end %>
       <% end %>
+    </div>
   </div>
 </div>
 

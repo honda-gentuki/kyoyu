@@ -17,7 +17,6 @@
   padding: 0.4em 1.6em;
   font-size: 0.8em;
   color: #fff;
-  text-decoration: none;
   user-select: none;
   background-color: #2988BC;
   border: 1px #2988BC solid;
@@ -85,7 +84,6 @@
   margin-bottom: 50px;
 }
 
-
 .greeting{
   padding-top: 48px;
   margin-bottom: 20px;
@@ -99,11 +97,6 @@
   color: black;
   opacity: 0.7;
 }
-
-.greeting__link{
-  text-decoration: none;
-}
-
 
 .page-heading {
   font-size: 30px;
@@ -175,7 +168,6 @@
 .card__title {
   font-size: 20px;
   font-weight: bold;
-  text-decoration: none;
 }
 
 .card__title{
@@ -190,7 +182,6 @@
 .card_sub_title {
   font-size: 15px;
   font-weight: bold;
-  text-decoration: none;
   color: black;
 }
 
@@ -241,10 +232,6 @@
 }
 
  /* いいね周り */
- #like-button{
-  text-decoration: none;
-}
-
 .flex-likes{
   display: flex;
 }
@@ -329,7 +316,6 @@
   padding: 0.4em 1.6em;
   font-size: 0.4em;
   color: #999;
-  text-decoration: none;
   user-select: none;
   border: 1px #999 solid;
   border-radius: 3px;
