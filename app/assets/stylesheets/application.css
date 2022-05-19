@@ -23,7 +23,7 @@
 }
 
 .main a:visited {
-  color: #1b00ee;
+  color: black;
 }
 
 .breadcrumbs a{
@@ -39,7 +39,7 @@
 }
 
 .notification-main a:visited{
-  color: #1b00ee;
+  color: black;
 }
 
 .follow-left {
@@ -47,7 +47,7 @@
 }
 
 .follow-left a:visited{
-  color: #1b00ee;
+  color: black;
 }
 
 .info-introduce a{
@@ -55,7 +55,7 @@
 }
 
 .info-introduce {
-  color: #1b00ee;
+  color: black;
 }
 
 .actions a{
@@ -63,5 +63,5 @@
 }
 
 .actions a:visited{
-  color: #fff;
+  color: black;
 }

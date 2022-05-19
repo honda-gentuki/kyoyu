@@ -70,9 +70,16 @@
   display: flex;
 }
 
+.btn-bell:hover{
+  opacity: 0.5;
+}
 
 .btn-bell i{
   color: white;
+}
+
+.btn-user:hover{
+  opacity: 0.5;
 }
 
 .btn-user i{

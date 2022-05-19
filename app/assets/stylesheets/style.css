@@ -89,12 +89,21 @@
 .greeting{
   padding-top: 48px;
   margin-bottom: 20px;
+}
 
+.greeting a{
+  color: black;
+}
+
+.greeting a:hover{
+  color: black;
+  opacity: 0.7;
 }
 
 .greeting__link{
   text-decoration: none;
 }
+
 
 .page-heading {
   font-size: 30px;
@@ -108,17 +117,20 @@
 .card__wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   min-height: calc(100vh - 161px);
 }
 
 .card__body{
   background-color: #fff;
-  border-radius: 15px;
-  height: 400px;
+  max-height: 450px;
   width: auto;
-  box-shadow:  5px 5px 5px #ccc;
+  border: 1px solid #ccc;
+  box-shadow: 5px 5px 5px #ccc;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -136,8 +148,16 @@
   margin-right: 30px;
 }
 
+.user-image img:hover{
+  opacity: 0.5;
+}
+
 .user__name{
   margin-right: 80px;
+}
+
+.user__name a:hover{
+  opacity: 0.5;
 }
 
 .card__img {
@@ -148,12 +168,30 @@
   border-bottom: 1px solid #ddd;
 }
 
+.card-img:hover{
+  opacity: 0.5;
+}
+
 .card__title {
-  display: flex;
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
 }
+
+.card__title a:hover{
+  opacity: 0.5;
+}
+
+.card_sub_title {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card_sub_title a:hover{
+  opacity: 0.5;
+}
+
 
 .card__summary {
   font-size: 16px;
@@ -172,11 +210,10 @@
   justify-content: space-around;
 }
 
-.card__footer{
+.card__name{
   display: flex;
   align-items: center;
   padding: 0 0 10px 15px;
-  margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -184,14 +221,69 @@
   margin-right: 16px;
 }
 
-post-edit i{
+.bi-gear{
   color: black;
+}
+
+.bi-gear:hover{
+  opacity: 0.5;
+}
+
+.card-footer{
+  display: flex;
+  align-items: center;
+}
+
+ /* いいね周り */
+ #like-button{
+  text-decoration: none;
+}
+
+.flex-likes{
+  display: flex;
 }
 
 .like-btn{
   margin: 20px;
 }
 
+.likes-icon{
+  margin-right: 20px;
+}
+
+.likes-count{
+  color: #536371;
+  margin-right: 30px;
+}
+
+.bi-suit-heart-fill{
+  color: red;
+}
+
+.bi-suit-heart{
+  color: red;
+}
+
+/* コメントボタン */
+.chat-btn{
+  display: flex;
+}
+
+.chat-icon{
+  margin-right: 20px;
+}
+
+.chat-count{
+  color: #536371;
+}
+
+.bi-chat-dots:hover{
+  opacity: 0.5;
+}
+
+.chat-count:hover{
+  opacity: 0.5;
+}
 /* 詳細ページ */
 
 .post__heading{
@@ -366,11 +458,6 @@ post-edit i{
   .table{
     width: 100%;
   }
-}
-
- /* いいねボタン */
-#like-button{
-  text-decoration: none;
 }
 
 /* 新規登録・ユーザー情報編集*/
