@@ -2,7 +2,7 @@
 
 .header {
   background-color: #2f496e;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .header a:visited {
@@ -22,8 +22,8 @@
 }
 
 .logo {
-  width: 75px;
-  border-radius: 5px;
+  height: 70px;
+  width: auto;
 }
 
 .nav__btn{
@@ -41,7 +41,7 @@
 
 .nav__btn:hover{
   color: #fff;
-  background: #87CEFA;
+  background: #2988bc;
 }
 
 .nav__logout{
@@ -62,11 +62,16 @@
 }
 
 .nav__logout:hover{
-  opacity: 0.5;
+  color: #fff;
+  background: #2988bc;
 }
 
 .nav-icon{
   display: flex;
+}
+
+.nav-icon i{
+  color: white;
 }
 
 .btn-user a{
