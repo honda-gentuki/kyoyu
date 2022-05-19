@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   def index
     @users = User.all
     @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
-    @post = Post.all.order('created_at DESC').page(params[:page]).reverse_order
+    @posts = Post.all.order('created_at DESC').page(params[:page])
+
   end
 
   def new
