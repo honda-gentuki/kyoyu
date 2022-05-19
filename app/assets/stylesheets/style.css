@@ -178,7 +178,12 @@
   text-decoration: none;
 }
 
+.card__title{
+  color: black;
+}
+
 .card__title a:hover{
+  color: black;
   opacity: 0.5;
 }
 
@@ -186,6 +191,7 @@
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
+  color: black;
 }
 
 .card_sub_title a:hover{
