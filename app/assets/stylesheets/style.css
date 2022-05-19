@@ -184,6 +184,10 @@
   margin-right: 16px;
 }
 
+post-edit i{
+  color: black;
+}
+
 .like-btn{
   margin: 20px;
 }

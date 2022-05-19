@@ -70,7 +70,12 @@
   display: flex;
 }
 
-.nav-icon i{
+
+.btn-bell i{
+  color: white;
+}
+
+.btn-user i{
   color: white;
 }
 
