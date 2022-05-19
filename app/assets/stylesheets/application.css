@@ -70,20 +70,22 @@
 #box{
   height: 600px;
 }
+
 .image1 {
-  background-image: url(image1.jpg);
+  background-image: url(#{@post.images[0]});
 }
+
 .image2 {
-  background-image: url(image2.jpg);
+  background-image: url(@post.images[1]);
 }
 .image3 {
-  background-image: url(image3.jpg);
+  background-image: url(@post.images[2]);
 }
 .image4 {
-  background-image: url(image4.jpg);
+  background-image: url(@post.images[3]);
 }
 .image5 {
-  background-image: url(image4.jpg);
+  background-image: url(@post.images[4]);
 }
 
 .slick-next {

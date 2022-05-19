@@ -205,9 +205,10 @@
 }
 
 .post__image{
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
-  padding: 16px 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .post__detail{
@@ -285,14 +286,14 @@
   align-items: center;
   padding: 16px;
   background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .comments{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0 10px 0;
   font-size: 20px;
 }
 
