@@ -50,7 +50,7 @@
                 <%= render "follow_form" %>
               </div> 
               <% if user_signed_in? && @user == current_user %>
-                <%= link_to "Edit profole", edit_user_registration_path(@user), class: "btn-sm btn-success" %>
+                <%= link_to "編集する", edit_user_registration_path(@user), class: "btn-sm btn-success" %>
                 <i class="bi bi-gear-wide-connected"></i>
               <% end %>
             </div>  
