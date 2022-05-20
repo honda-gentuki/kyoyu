@@ -15,8 +15,21 @@
       <div class="show__user__name">
         <%= link_to "#{@post.user.nickname}先生", user_path(@post.user.id) %>
       </div>
-      <div>
+      <div class="edit_delete">
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <div class="post__manage">
+          <%= link_to edit_post_path do%>
+            <i class="bi bi-gear"></i>
+          <% end %>
+          <%= link_to post_path, method: :delete, data: { confirm: "投稿を削除してもよろしいですか？" } do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
       </div>
+    </div>
+    <div class="post__show__title">
+      基本情報
     </div>
     <table class="table__2">
       <tbody>
@@ -42,7 +55,32 @@
         </tr>
       </tbody>
     </table>
-    
+
+    <div class="post__show__title">
+      授業の展開
+    </div>
+    <table class="table__3">
+      <tbody>
+        <th class="table__col7">導入(<%= @post.introduction_time %>)分</th>
+          <td class="table__col8"><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th class="table__col7">展開(<%= @post.development_time %>)分</th>
+          <td class="table__col8"><%= @post.development %></td>
+        </tr>
+        <tr>
+          <th class="table__col7">まとめ(<%= @post.summary_time %>)分</th>
+          <td class="table__col8"><%= @post.summary %></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <div class="post__show__title">
+      板書案・スライド・添付資料
+    </div>
+
     <div class="post_show_image">
       <% if @post.images.present? %>
         <div class="post__image">
@@ -59,27 +97,7 @@
         <%= link_to image_tag 'no-post.png' %>
       <% end %>
     </div>
-    <table class="table__2">
-      <tbody>
-        <th class="table__col1">導入(<%= @post.introduction_time %>)分</th>
-          <td class="table__col2"><%= @post.introduction %></td>
-        </tr>
-        <tr>
-          <th class="table__col1">展開(<%= @post.development_time %>)分</th>
-          <td class="table__col2"><%= @post.development %></td>
-        </tr>
-        <tr>
-          <th class="table__col1">まとめ(<%= @post.summary_time %>)分</th>
-          <td class="table__col2"><%= @post.summary %></td>
-        </tr>
-      </tbody>
-    </table>
-    <% if user_signed_in? && current_user.id == @post.user_id %>
-      <div class="post__manage">
-        <%= link_to "編集する", edit_post_path, class: :form__btn%>
-        <%= link_to "削除する", post_path, class: :form__btn, method: :delete %>
-      </div>
-    <% end %>
+
     <div class="post__comments">
       <div class="comment-form">
         <% if user_signed_in? %>

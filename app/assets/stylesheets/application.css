@@ -56,3 +56,19 @@ a{
   color: black;
 }
 
+.bi-gear{
+  color: black;
+}
+
+.bi-gear:hover{
+  opacity: 0.5;
+}
+
+.bi-trash{
+  color: black;
+  margin-left: 20px;
+}
+
+.bi-trash:hover{
+  opacity: 0.5;
+}
