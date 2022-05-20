@@ -119,7 +119,6 @@
   background-color: #fff;
   max-height: 450px;
   width: auto;
-  border: 1px solid #ccc;
   box-shadow: 5px 5px 5px #ccc;
   border-radius: 15px;
   display: flex;
@@ -231,6 +230,10 @@
   align-items: center;
 }
 
+.paginate{
+  padding-bottom: 24px;
+}
+
  /* いいね周り */
 .flex-likes{
   display: flex;
@@ -270,6 +273,10 @@
   color: #536371;
 }
 
+.bi-chat-dots{
+  color: black;
+}
+
 .bi-chat-dots:hover{
   opacity: 0.5;
 }
@@ -277,6 +284,8 @@
 .chat-count:hover{
   opacity: 0.5;
 }
+
+
 /* 詳細ページ */
 
 .post__heading{
@@ -663,7 +672,7 @@
 /* main */
 .title-contents {
   width: 100vw;
-  background-image: url("/app/assets/images/school.png");
+  background-image: url('school.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -752,6 +761,59 @@
 }
 
 .reason-list-description {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* 特徴 */
+.feature-contents {
+  padding: 5vh 15vw;
+  background-color: #f2f2f2;
+}
+
+.feature-contents>.title {
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  position: relative;
+}
+
+.feature-contents>.title::after {
+  content: '';
+  width: 70px;
+  height: 4px;
+  background-color: #3ccace;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.feature-lists {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.feature-lists img{
+  height: 200px;
+}
+
+.feature-lists>.list {
+  width: 33vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-list-text {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 50px;
+}
+
+.feature-list-description {
   font-size: 18px;
   margin-top: 20px;
 }

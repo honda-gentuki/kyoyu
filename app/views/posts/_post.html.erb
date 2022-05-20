@@ -21,7 +21,11 @@
       </div>
     </div>
     <div class="card-img">
-      <%= link_to image_tag(post.images[0], class: :card__img ), post_path(post.id) if post.images.attached? %>
+      <% if post.images.present? %>
+        <%= link_to image_tag(post.images[0], class: :card__img ), post_path(post.id) if post.images.attached? %>
+      <% else %>
+        <%= link_to image_tag('no-post.png', class: :card__img ), post_path(post.id) %>
+      <% end %>
     </div>
     
     <div class="card__name">
