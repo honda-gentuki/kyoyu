@@ -34,8 +34,8 @@
     <table class="table__2">
       <tbody>
         <tr>
-          <th class="table__col5", style="border-radius: 5px 0 0 0;">教科名</th>
-          <td class="table__col6", style="border-radius: 0 5px 0 0;"><%= @post.subject %></td>
+          <th class="table__col5">教科名</th>
+          <td class="table__col6"><%= @post.subject %></td>
         </tr>
         <tr>
           <th class="table__col5">科目名</th>
@@ -65,8 +65,8 @@
           <td class="table__col8"><%= @post.introduction %></td>
         </tr>
         <tr>
-          <th class="table__col7">展開(<%= @post.development_time %>)分</th>
-          <td class="table__col8"><%= @post.development %></td>
+          <th class="table__col9">展開(<%= @post.development_time %>)分</th>
+          <td class="table__col10"><%= @post.development %></td>
         </tr>
         <tr>
           <th class="table__col7">まとめ(<%= @post.summary_time %>)分</th>
@@ -97,14 +97,15 @@
         <%= link_to image_tag 'no-post.png' %>
       <% end %>
     </div>
-
+    <div class="post__show__title">
+      コメント
+    </div>
     <div class="post__comments">
       <div class="comment-form">
         <% if user_signed_in? %>
           <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
             <div class="field">
-              <%= f.label :content, "コメント" %><br />
-              <%= f.text_field :content, id:"comment_content" %>
+              <%= f.text_field :content, id:"comment_content", class:"input-comment", placeholder:"コメントを入力してください"%>
             </div>
             <div class="actions">
               <%= f.submit "送信する", class: :form__btn  %>
@@ -114,14 +115,31 @@
             <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
         <% end %> 
       </div>
+
       <div id="comments">
-        <h4>＜コメント一覧＞</h4>
+        <div class="h4">＜コメント一覧＞</div>
         <ul class="comments_lists">
           <% @post.comments.each do |comment| %>
             <div class="comment">
               <li class="comment_list">
-                <%= "・#{comment.content}" %>
-                <%= link_to comment.user.nickname, user_path(@post.user), class: :comment_user %>
+              <div class="follow-header">
+                <div class="user-image">
+                  <% if comment.user.image? %>
+                    <%= image_tag comment.user.image.url %>
+                  <% else %>
+                    <%= image_tag("/images/no-image.png") %>
+                  <% end %>
+                </div>
+                <div class="follow-right">
+                  <div class="user-nickname">
+                    <%= comment.user.nickname %>
+                  </div>
+                  <div class="user-introduce">
+                    <%= comment.content %>
+                  </div>
+                </div>
+              </div>
+
               </li>
             </div>
           <% end %>
