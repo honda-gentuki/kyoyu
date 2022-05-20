@@ -16,6 +16,7 @@
  * {
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
+  font-family: FontAwesome;
 }
 
 a{
@@ -43,12 +44,11 @@ a{
 }
 
 .actions a:visited{
-  color: black;
+  color: #fff;
 }
 
 .user-nickname{
   margin-bottom: 10px;
   color: black;
-
 }
 
