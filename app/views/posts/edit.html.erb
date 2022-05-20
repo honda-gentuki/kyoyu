@@ -1,9 +1,2 @@
 <% breadcrumb :post_edit, @post %>
-<div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">投稿編集</h2>
-        <%= render partial: "form", locals:{url: post_path(@post.id), method: :patch} %>
-    </div>
-  </div>
-</div>
+<%= render partial: "form", locals:{url: post_path(@post.id), method: :patch} %>
