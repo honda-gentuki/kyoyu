@@ -10,6 +10,9 @@
         </div>
         <div class="action">
           <div class="actions">
+        <% if current_user != @user %>
+          <%= link_to 'Begin Chat', chat_path(@user.id) %>
+        <% end %> 
             <%= link_to "チャット", chat_path, class: :form__btn%>
           </div>
           <div class="actions">
@@ -80,6 +83,10 @@
           </table>
         </div>
       </div>
+
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}先生の投稿"%>
+      </h2>
 
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生がいいねした投稿"%>

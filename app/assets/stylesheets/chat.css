@@ -1,16 +1,28 @@
+.chat-header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.chat-user{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #your_container{
   /* 高さや幅など、好きな様に設定
   bms_messages_containerの方で、縦横いっぱいに広がってくれるので、
   ここで充てた高さと横幅がそのままスタイルになる仕組み */
-
-  height:600px;/*ここはご自由に*/
-  width: 50%;/*ここはご自由に*/
+  height:500px;/*ここはご自由に*/
+  width: 70%;/*ここはご自由に*/
 }
 /* チャットの外側部分① */
 #bms_messages_container{
   height: 100%;/*your_containerに対して100%になる */
-  width: 100%;/*your_containerに対して100%になる */
+  width: auto;/*your_containerに対して100%になる */
   background-color: #eee;
+  margin-bottom: 60px;
 }
 
 /* ヘッダー部分② */
@@ -20,21 +32,6 @@
   height: 34px;
   background: #ddd;
   border: 1px solid #ccc;
-}
-/* ステータスマークとユーザー名 */
-#bms_chat_user_status {
-  float: left;/* bms_chat_headerに対して左寄せ */
-}
-/* ステータスマーク */
-#bms_status_icon {
-  float: left;/* bms_chat_user_statusに対して左寄せ */
-  line-height: 2em;/*高さ調整*/
-}
-/* ユーザー名 */
-#bms_chat_user_name {
-  float: left;/* bms_chat_user_statusに対して左寄せ */
-  line-height: 2em;/*高さ調整*/
-  padding-left: 8px;
 }
 
 /* タイムライン部分③ */
@@ -47,12 +44,54 @@
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2) inset;/*ヘッダーの下に影を入れる*/
 }
 /* メッセージ全般のスタイル */
+.chat__message{
+  display: flex;
+  flex-direction: column;
+}
+
 .bms_message {
   margin: 0px;
   padding: 0 14px;/*吹き出しがタイムラインの側面にひっつかない様に隙間を開ける*/
   font-size: 16px;
   word-wrap: break-word;/* 吹き出し内で自動で改行 */
   white-space: normal;/*指定widthに合わせて、文字を自動的に改行*/
+}
+/**追加*/
+.bms_message_box{
+  margin-top: 20px;/*上下の吹き出しがひっつかない様に隙間を入れる*/
+  max-width: 100%;/*文字が長くなった時に吹き出しがタイムラインからはみ出さない様にする*/
+  font-size: 16px;
+}
+/**追加*/
+.bms_message_content{
+  padding: 20px;/*文字や画像（コンテンツ）の外側に隙間を入れる*/
+}
+/* メッセージ１（左側） */
+.bms_left {
+  float: left;/*吹き出しをbms_messagesに対して左寄せ*/
+  line-height: 1.3em;
+}
+/**追加*/
+.bms_left .bms_message_box {
+  color: #333;/*テキストを黒にする*/
+  background: #fff;
+  border: 2px solid #13178E;
+  border-radius: 30px 30px 30px 0px;/*左下だけ尖らせて吹き出し感を出す*/
+  margin-right: 50px;/*左側の発言だとわかる様に、吹き出し右側に隙間を入れる*/
+}
+
+/* メッセージ２（右側） */
+.bms_right {
+  float: right;/*吹き出しをbms_messagesに対して右寄せ*/
+  line-height: 1.3em;
+}
+/**追加*/
+.bms_right .bms_message_box {
+  color: #fff;/*テキストを白にする*/
+  background: #13178E;
+  border: 2px solid #13178E;
+  border-radius: 30px 30px 0px 30px;/*右下だけ尖らせて吹き出し感を出す*/
+  margin-left: 50px;/*右側の発言だとわかる様に、吹き出し左側に隙間を入れる*/
 }
 /* メッセージ１（左側） */
 .bms_left {
@@ -69,12 +108,12 @@
   clear: both; /* 左メッセージと右メッセージの回り込み(float)の効果の干渉を防ぐために必要（これが無いと、自分より下のメッセージにfloatが影響する） */
 }
 
+.already__read{
+  opacity: 0.5;
+}
+
 /* テキストエリア、送信ボタン④ */
 #bms_send {
-  background-color:#eee;/*タイムラインの色と同じにする*/
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
   height: 48px;
   padding: 4px;
 }
@@ -88,66 +127,31 @@
   text-align: left;/*文字を左寄せ*/
   box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.2) inset;/*内側に影を入れてテキストエリアらしくした*/
   box-sizing: border-box;/*paddingとborderの要素の高さと幅の影響をなくす（要素に高さと幅を含める）*/
-
+  resize: none;
 }
-#bms_send_btn {
-  width: 72px;
+
+.form__btn_send{
+  display: inline-block;
   height: 48px;
-  font-size: 16px;
-  line-height: 3em;
-  float: right;/*bms_sendに対して右寄せ*/
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
   color: #fff;
-  font-weight: bold;
-  background: #bcbcbc;
-  text-align: center;/*文字をボタン中央に表示*/
-  border: 1px solid #bbb;
-  border-radius: 4px;/*角丸*/
-  box-sizing: border-box;/*paddingとborderの要素の高さと幅の影響をなくす（要素に高さと幅を含める）*/
-}
-#bms_send_btn:hover {
-  background: #13178E; /*マウスポインタを当てた時にアクティブな色になる*/
-  cursor: pointer;/*マウスポインタを当てた時に、カーソルが指の形になる*/
+  user-select: none;
+  background-color: #2988BC;
+  border: 1px #2988BC solid;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+  width: 10%;
+  text-align: center;
 }
 
-.bms_message {
-  ・・・
+.form__btn_send:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
 }
-
-
-.bms_message_box{
-  margin-top: 20px;/*上下の吹き出しがひっつかない様に隙間を入れる*/
-  max-width: 100%;/*文字が長くなった時に吹き出しがタイムラインからはみ出さない様にする*/
-  font-size: 16px;
-}
-
-.bms_message_content{
-  padding: 20px;/*文字や画像（コンテンツ）の外側に隙間を入れる*/
-}
-
-/* メッセージ１（左側） */
-.bms_left {
-  float: left;/*吹き出しをbms_messagesに対して左寄せ*/
-  line-height: 1.3em;
-}
-
-.bms_left .bms_message_box {
-  color: #333;/*テキストを黒にする*/
-  background: #fff;
-  border: 2px solid #13178E;
-  border-radius: 30px 30px 30px 0px;/*左下だけ尖らせて吹き出し感を出す*/
-  margin-right: 50px;/*左側の発言だとわかる様に、吹き出し右側に隙間を入れる*/
-}
-
-/* メッセージ２（右側） */
-.bms_right {
-  float: right;/*吹き出しをbms_messagesに対して右寄せ*/
-  line-height: 1.3em;
-}
-
-.bms_right .bms_message_box {
-  color: #fff;/*テキストを白にする*/
-  background: #13178E;
-  border: 2px solid #13178E;
-  border-radius: 30px 30px 0px 30px;/*右下だけ尖らせて吹き出し感を出す*/
-  margin-left: 50px;/*右側の発言だとわかる様に、吹き出し左側に隙間を入れる*/
+.chat-send{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

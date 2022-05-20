@@ -1,99 +1,89 @@
 <% breadcrumb :chat, @user %>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-      <h2>CHAT WITH <%= @user.nickname %></h2>
-        <table class="message table">
-          <thead>
-            <tr>
-              <th style="text-align: left; font-size: 20px;"><%= current_user.nickname %></th>
-              <th style="text-align: right; font-size: 20px;"><%= @user.nickname %></th>
-            </tr>
-          </thead>
-          <% @chats.each do |chat| %>
-            <% if chat.user_id == current_user.id %>
-            <tbody>
-              <tr>
-                <th>
-                  <p style="text-align: left;"><%= chat.message %><%= @read ? '既読' : '未読' %></p>
-                </th>
-                <th></th>
-              </tr>
-            <% else %>
-              <tr>
-                <th></th>
-                <th>
-                  <p style="text-align: right;"><%= chat.message %><%= @read ? '既読' : '未読' %></p>
-                </th>
-              </tr>
-            </tbody>
-            <% end %>
-          <% end %>
-        </table>
-      <%= form_with model: @chat, remote: true do |f| %>
-        <%= f.text_field :message %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
-      <% end %>
+<div class="registration-main">
+  <div id="your_container">
+  <div class="chat-header">
+    
+    <div class="chat-user">
+      <div class="user-image">
+        <% if  @user.image? %>
+          <%= image_tag  @user.image.url %>
+        <% else %>
+          <%= image_tag("/images/no-image.png") %>
+        <% end %>
+      </div>
+      <div>
+        <%= @user.nickname %>先生
+      </div>
+    </div>
+    <div class="myself-user">
+      <i class="bi bi-caret-left-fill"></i>
+      <i class="bi bi-caret-left"></i>
+      <i class="bi bi-caret-left-fill"></i>
+    </div>
+    <div class ="chat-user">
+      <div class="user-image">
+        <% if current_user.image? %>
+          <%= image_tag current_user.image.url %>
+        <% else %>
+          <%= image_tag("/images/no-image.png") %>
+        <% end %>
+      </div>
+      <div>
+      <%= current_user.nickname %>先生
+      </div>
     </div>
   </div>
-</div>
-<% if current_user != @user %>
-  <%= link_to 'Begin Chat', chat_path(@user.id) %>
-<% end %> 
 
-<!-- 自分やユーザーの情報 -->
-<div id="your_container">
-  <h3 id="me" user_id="1">あなたはユーザー1です</h3>
-  <h3 id="partner" thread_id="1">相手</h3>
-  <div id="users">
-      <button class="user" user_id="2">ユーザー2</button>
-  </div>
-  <br>
-  <div id="your_container">
-
-      <!-- チャットの外側部分① -->
-      <div id="bms_messages_container">
-          <!-- ヘッダー部分② -->
-          <div id="bms_chat_header">
-              <!--ステータス-->
-              <div id="bms_chat_user_status">
-                  <!--ステータスアイコン-->
-                  <div id="bms_status_icon">●</div>
-                  <!--ユーザー名-->
-                  <div id="bms_chat_user_name">ユーザー</div>
-              </div>
-          </div>
-
-          <!-- タイムライン部分③ -->
-          <div id="bms_messages">
-
-              <!--メッセージ１（左側）-->
-              <div class="bms_message bms_left">
-                  <div class="bms_message_box">
-                      <div class="bms_message_content">
-                          <div class="bms_message_text">ほうほうこりゃー便利じゃないか</div>
-                      </div>
-                  </div>
-              </div>
-              <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
-
-              <!--メッセージ２（右側）-->
-              <div class="bms_message bms_right">
-                  <div class="bms_message_box">
-                      <div class="bms_message_content">
-                          <div class="bms_message_text">うん、まあまあいけとるな</div>
-                      </div>
-                  </div>
-              </div>
-              <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
-          </div>
-
-          <!-- テキストボックス、送信ボタン④ -->
-          <div id="bms_send">
-              <textarea id="bms_send_message"></textarea>
-              <div id="bms_send_btn">送信</div>
-          </div>
+    <!-- チャットの外側部分① -->
+    <div id="bms_messages_container">
+      <!-- ヘッダー部分② -->
+      <div id="bms_chat_header">
       </div>
+      <!-- タイムライン部分③ -->
+      <div id="bms_messages">
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+          <!--メッセージ２（右側）-->
+            <div class="bms_message bms_right">
+                <div class="bms_message_box">
+                    <div class="bms_message_content">
+                        <div class="bms_message_text">
+                          <div style="text-align: left;">
+                            <%= chat.message %>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              <div class="already__read">
+                <%= @read ? '既読' : '未読' %>
+              </div>
+            </div>
+            <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
+          <% else %>
+            <!--メッセージ１（左側）-->
+            <div class="bms_message bms_left">
+                <div class="bms_message_box">
+                    <div class="bms_message_content">
+                        <div class="bms_message_text">
+                          <div style="text-align: left;">
+                            <%= chat.message %>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <!-- テキストボックス、送信ボタン④ -->
+    <%= form_with model: @chat, remote: true, id:"bms_send" do |f| %>
+    <div class="chat-send">
+      <%= f.text_field :message, id:"bms_send_message" %>
+      <%= f.hidden_field :room_id, id:"bms_send_btn" %>
+      <%= f.submit "送信", class: :form__btn_send %>
+    </div>
+    <% end %>
   </div>
 </div>
