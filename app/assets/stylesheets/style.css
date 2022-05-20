@@ -125,7 +125,7 @@
 }
 
 .user__name{
-  margin-right: 80px;
+  margin-right: 40px;
 }
 
 .user__name a:hover{
@@ -577,6 +577,7 @@
 
 .user-profile{
   display: flex;
+  margin-bottom: 36px;
 }
 
 .profile-card{
@@ -593,7 +594,13 @@
   background: #f2f2f2;
   border-radius: 5px 5px 0 0 ;
   display: flex;
+  flex-direction: column;
+}
 
+.card-header span{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 15px;
 }
 
 .card-image img{
@@ -618,7 +625,7 @@
 }
 
 .table{
-  height: 410px;
+  height: 430px;
 }
 
 .table tbody{
