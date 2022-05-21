@@ -327,9 +327,9 @@
 
 .post__image{
   width: 100%;
-  margin: 0 auto
-  border-top: 1px sol #ddd;
-  border-bottom: 1px solid #ddd
+  margin: 0 auto;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: center;
@@ -371,13 +371,13 @@
 
 /* コメント周り */
 
-.post__comments
+.post__comments{
   background-color: #f6f6f6;
   padding: 30px;
   width: 90%;
   margin: 0 auto;
-  border: 1px solid #ddd
-  padding: 20px 0 40px 0 ;
+  border: 1px solid #ddd;
+  padding: 20px 0 40px 0;
 }
 
 .h4{
@@ -428,6 +428,8 @@
   align-items: center;
   margin: 20px 0 10px 0;
   font-size: 20px
+}
+
 .table__2{
   border-collapse: collapse;
   width: 100%;
@@ -761,7 +763,7 @@
   border-bottom: 1px solid #ddd;
   background: #f2f2f2;
   border-radius: 5px 5px 0 0 ;
-  display: flex
+  display: flex;
   flex-direction: column;
 }
 
@@ -797,6 +799,7 @@
 
 .table tbody{
   box-shadow: 15px 20px 20px #ccc;
+}
 
 .flex-row{
   display: flex;
@@ -942,7 +945,7 @@
 
 .trush-icon{
   margin-left: 15px;
-
+}
 
 /* main */
 .title-contents {
