@@ -65,31 +65,3 @@
 .actions a:visited{
   color: #fff;
 }
-
-/* スライドショー */
-#box{
-  height: 600px;
-}
-
-.image1 {
-  background-image: url(#{@post.images[0]});
-}
-
-.image2 {
-  background-image: url(@post.images[1]);
-}
-.image3 {
-  background-image: url(@post.images[2]);
-}
-.image4 {
-  background-image: url(@post.images[3]);
-}
-.image5 {
-  background-image: url(@post.images[4]);
-}
-
-.slick-next {
-  right: 10px !important;
-  z-index: 100;
-}
-
