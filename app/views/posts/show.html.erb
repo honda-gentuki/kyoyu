@@ -57,7 +57,7 @@
         </tr>
         <tr>
           <th class="table_col1">タグ</th>
-          <td class="table_col2"><%= @post.tags&.first&.tag_name %></td>
+          <td class="table_col2"><%= @post.tags&.first&.tag_name if @post.tags.first.present? %></td>
         </tr>
       </tbody>
     </table>
@@ -68,18 +68,18 @@
       </div>
     </div>
 
-        <% if @post.images.present? %>
-          <div class="post__image">
-            <%= image_tag @post.images[0]%>
-            <div class="other-images">
-              <% @post.images[1..-1].each do |image| %>
-                <div class="other-image">
-                  <%= image_tag image %>
-                </div>
-              <%end%>
+    <% if @post.images.present? %>
+      <div class="post__image">
+        <%= image_tag @post.images[0]%>
+        <div class="other-images">
+          <% @post.images[1..-1].each do |image| %>
+            <div class="other-image">
+              <%= image_tag image %>
             </div>
-          </div>
-        <% end %>
+          <%end%>
+        </div>
+      </div>
+    <% end %>
 
     <div class="post-title">
       <div class="post__detail">

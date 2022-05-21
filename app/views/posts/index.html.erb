@@ -15,7 +15,7 @@
     </div>
     <div class="search">
       <%= form_with url: posts_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search, class:"input-search", id:"input_search", maxlength:"40" %>
+        <%= f.text_field :search, class:"input-search", id:"post_form_tag_name", maxlength:"40" %>
         <%= f.submit '検索', class: :form__btn %>
       <% end %>
     </div>
