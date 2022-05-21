@@ -31,7 +31,7 @@ class PostForm
                 development: development, development_time: development_time, summary: summary, summary_time: summary_time, teaching_materials: teaching_materials, images: images, user_id: user_id)
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
-    PostTag.create(post_id: post.id, tag_id: tag.id)
+    post = PostTag.create(post_id: post.id, tag_id: tag.id)
   end
 
   def update(params, post)
@@ -40,6 +40,6 @@ class PostForm
     tag = Tag.where(tag_name: tag_name).first_or_initialize if tag_name.present?
     tag.save if tag_name.present?
     post.update(params)
-    PostTag.create(post_id: post.id, tag_id: tag.id) if tag_name.present?
+    post = PostTag.create(post_id: post.id, tag_id: tag.id) if tag_name.present?
   end
 end
