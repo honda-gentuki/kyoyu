@@ -2,7 +2,7 @@
 
 .header {
   background-color: #2f496e;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .header a:visited {
@@ -21,9 +21,49 @@
   align-items: center;
 }
 
+
+
+.input-search {
+  width: 70%;
+  margin-top: 5px;
+  height: 4vh;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__btn{
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+  user-select: none;
+  background-color: #2988BC;
+  border: 1px #2988BC solid;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+  width: 15%;
+  height: 4vh;
+  text-align: center;
+}
+
+.search__btn:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
 .logo {
-  width: 75px;
-  border-radius: 5px;
+  height: 70px;
+  width: auto;
 }
 
 .nav__btn{
@@ -31,7 +71,6 @@
   padding: 0.4em 1.6em;
   font-size: 0.8em;
   color: #fff;
-  text-decoration: none;
   user-select: none;
   border: 1px #fff solid;
   border-radius: 3px;
@@ -41,7 +80,7 @@
 
 .nav__btn:hover{
   color: #fff;
-  background: #87CEFA;
+  background: #2988bc;
 }
 
 .nav__logout{
@@ -49,7 +88,6 @@
   padding: 0.4em 1.6em;
   font-size: 0.8em;
   color: #fff;
-  text-decoration: none;
   user-select: none;
   border: 1px #fff solid;
   border-radius: 3px;
@@ -62,19 +100,30 @@
 }
 
 .nav__logout:hover{
-  opacity: 0.5;
+  color: #fff;
+  background: #2988bc;
 }
 
 .nav-icon{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn-user a{
-  text-decoration: none;
+.btn-bell:hover{
+  opacity: 0.5;
 }
 
-.btn-default a{
-  text-decoration: none;
+.btn-bell i{
+  color: white;
+}
+
+.btn-user:hover{
+  opacity: 0.5;
+}
+
+.btn-user i{
+  color: white;
 }
 
 .size{

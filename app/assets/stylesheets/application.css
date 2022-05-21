@@ -16,52 +16,59 @@
  * {
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
+  font-family: FontAwesome;
 }
 
-.main a{
+a{
   text-decoration: none;
 }
 
 .main a:visited {
-  color: #1b00ee;
-}
-
-.breadcrumbs a{
-  text-decoration: none;
+  color: black;
 }
 
 .breadcrumbs a:visited {
   color: #1b00ee;
 }
 
-.notification-main a{
-  text-decoration: none;
-}
-
 .notification-main a:visited{
-  color: #1b00ee;
-}
-
-.follow-left {
-  text-decoration: none;
+  color: black;
 }
 
 .follow-left a:visited{
-  color: #1b00ee;
-}
-
-.info-introduce a{
-  text-decoration: none;
+  color: black;
 }
 
 .info-introduce {
-  color: #1b00ee;
-}
-
-.actions a{
-  text-decoration: none; 
+  color: black;
 }
 
 .actions a:visited{
   color: #fff;
+}
+
+.user-nickname{
+  margin-bottom: 10px;
+  color: black;
+}
+
+.show__user__name a{
+  color: black;
+}
+
+.bi-gear{
+  color: black;
+}
+
+.bi-gear:hover{
+  opacity: 0.5;
+}
+
+.bi-trash{
+  color: black;
+  margin-left: 20px;
+}
+
+.bi-trash:hover{
+  opacity: 0.5;
 }

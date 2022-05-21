@@ -4,6 +4,14 @@
       <div class="nav__left">
         <%= link_to image_tag("logo.png", class: :logo), root_path %>
       </div>
+
+      <div class="search">
+        <%= form_with url: posts_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search, class:"input-search", id:"input_search", maxlength:"40" %>
+          <%= f.submit "\uF002", class: :search__btn %>
+        <% end %>
+      </div>
+          
       <% if user_signed_in? %>
         <div class="nav__right">
           <div class="nav-btn">
@@ -12,10 +20,12 @@
           </div>
           <div class="nav-icon">
             <div class="btn-default">
-              <%= link_to notifications_path do %>
-                <i class="bi bi-bell size"></i>
-              <% end %>
-              <div class=" bottom-right">
+              <div class="btn-bell">
+                <%= link_to notifications_path do %>
+                  <i class="bi bi-bell size"></i>
+                <% end %>
+              </div>
+              <div class="bottom-right">
                 <% if unchecked_notifications.any? %>
                   <i class="bi bi-circle-fill"></i>
                 <% end %>
