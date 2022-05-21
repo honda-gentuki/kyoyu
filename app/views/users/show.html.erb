@@ -81,10 +81,14 @@
         </div>
       </div>
 
-      <%= link_to "いいねした投稿", post_likes_path(@user) %>
-
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生の投稿"%>
+      </h2>
+      <div class="user__card">
+        <%= render partial: 'posts/post', collection: @post %>
+      </div>
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}先生がいいねした投稿"%>
       </h2>
       <div class="user__card">
         <%= render partial: 'posts/post', collection: @user.posts %>
