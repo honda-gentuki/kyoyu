@@ -14,12 +14,15 @@
       <div class="user__name">
         <%= link_to "#{post.user.nickname}先生", user_path(post.user.id) %>
       </div>
-      <div class="post-edit">
-        <%= link_to "edit_post_path" do %>
-          <i class="bi bi-gear"></i>
-        <% end %> 
-      </div>
+      <% if user_signed_in? && current_user.id == post.user_id %>
+        <div class="post-edit">
+          <%= link_to edit_post_path(current_user.id) do %>
+            <i class="bi bi-gear"></i>
+          <% end %> 
+        </div>
+      <% end %>
     </div>
+
     <div class="card-img">
       <% if post.images.present? %>
         <%= link_to image_tag(post.images[0], class: :card__img ), post_path(post.id) if post.images.attached? %>

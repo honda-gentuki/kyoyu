@@ -128,6 +128,10 @@
   margin-right: 40px;
 }
 
+.user__name a{
+  color: black;
+}
+
 .user__name a:hover{
   opacity: 0.5;
 }
@@ -322,7 +326,7 @@
   align-items: center;
   font-size: 30px;
   font-weight: 10;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .post__image{
@@ -374,7 +378,7 @@
 .post__comments{
   background-color: #f6f6f6;
   padding: 30px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 30px;
   border: 1px solid #ddd;
@@ -387,6 +391,7 @@
 
 .comments_lists{
   padding-left: 20px;
+  background-color: #fff;
 }
 
 .comments_list{
@@ -399,6 +404,7 @@
   color: #999;
   text-decoration: underline;
 }
+
 .comment-main{
   margin: 24px 0 24px 0;
 }
@@ -413,6 +419,11 @@
 #comment_content.input-class{
   width: 340px;
   height: 70px;
+}
+
+#comment_content.input-comment{
+  width: 350px;
+  height: 50px;
 }
 
 .comment-card{

@@ -19,8 +19,23 @@ if(location.pathname.match(/\/posts\/\d/)){
       const html = `
       <div class="comment">
         <li class="comment_list">
-         ${data.comment.content}
-          <a class="comment_user" href="/users/user.id">${data.user.nickname}</a>
+          <div class="follow-header">
+            <div class="user-image">
+              if (date.comment.user.image?){
+                <a class="comment_user" href="/users/user.id"><img src="data.comment.user.image.url"></a>
+              }else{
+                <a class="comment_user" href="/users/user.id"><img src="/images/no-image.png"></a>
+              }
+            </div>
+            <div class="follow-right">
+              <div class="user-nickname">
+                ${data.comment.user.nickname}
+              </div>
+              <div class="user-introduce">
+                ${data.comment.content}
+              </div>
+            </div>
+          </div>
         </li>
       </div>`
       const comments = document.getElementById("comments")
