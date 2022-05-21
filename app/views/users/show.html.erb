@@ -84,6 +84,15 @@
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生の投稿"%>
       </h2>
+<<<<<<< Updated upstream
+=======
+      <div class="user__card">
+        <%= render partial: 'posts/post', collection: @post%>
+      </div>
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}先生がいいねした投稿"%>
+      </h2>
+>>>>>>> Stashed changes
       <div class="user__card">
         <%= render partial: 'posts/post', collection: @user.posts %>
       </div>

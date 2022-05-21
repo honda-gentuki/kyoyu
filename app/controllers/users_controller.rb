@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers]
 
   def show
+<<<<<<< Updated upstream
+=======
+    @post = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+>>>>>>> Stashed changes
     @posts = @user.posts.page(params[:page]).reverse_order
     @following_users = @user.following
     @follower_users = @user.followers
