@@ -5,8 +5,11 @@ class PostsController < ApplicationController
 
   def index
     @users = User.all
-    @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @tags = Tag.all
+    @tags = Tag.where('tag_name LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @post = Post.all.order('created_at DESC').page(params[:page]).reverse_order
+    @q = Tag.ransack(params[:q])
+    @tags = @q.result(distinct: true)
   end
 
   def new
@@ -55,7 +58,6 @@ class PostsController < ApplicationController
 
   def search
     return nil if params[:keyword] == ''
-
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
     render json: { keyword: tag }
   end
