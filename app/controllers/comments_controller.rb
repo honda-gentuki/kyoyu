@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment_post = @comment.post
-
+    CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } if @comment.save
+    @comment.user_id = current_user.id
     if @comment.save
       # 通知の作成
       @comment_post.create_notification_comment!(current_user, @comment.id)

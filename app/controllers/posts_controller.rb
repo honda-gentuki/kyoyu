@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     @post = Post.all.order('created_at DESC').page(params[:page]).reverse_order
     @q = Tag.ransack(params[:q])
     @tags = @q.result(distinct: true)
+    @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @posts = Post.all.order('created_at DESC').page(params[:page])
   end
 
   def new

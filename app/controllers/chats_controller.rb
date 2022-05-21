@@ -3,7 +3,7 @@ class ChatsController < ApplicationController
     @user = User.find(params[:id])
     rooms = current_user.room_users.pluck(:room_id)
     room_users = RoomUser.find_by(user_id: @user.id, room_id: rooms)
-
+    room = nil
     if room_users.nil?
       @room = Room.new
       @room.save

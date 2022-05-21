@@ -77,7 +77,19 @@
               <%= image_tag image %>
             </div>
           <%end%>
+  <div class="form-wrap">
+    <div class="show__header">
+      <%= link_to user_path(@post.user.id) do%>
+        <div class="show__user-image">
+          <% if @post.user.image? %>
+            <%= image_tag @post.user.image.url %>
+          <% else %>
+            <%= image_tag("/images/no-image.png") %>
+          <% end %>
         </div>
+      <% end %>
+      <div class="show__user__name">
+        <%= link_to "#{@post.user.nickname}先生", user_path(@post.user.id) %>
       </div>
     <% end %>
 
@@ -100,10 +112,46 @@
         <tr>
           <th class="table_col5">まとめ<%= @post.summary_time %>分</th>
           <td class="table_col6"><%= @post.summary %></td>
+      <div class="edit_delete">
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <div class="post__manage">
+          <%= link_to edit_post_path do%>
+            <i class="bi bi-gear"></i>
+          <% end %>
+          <%= link_to post_path, method: :delete, data: { confirm: "投稿を削除してもよろしいですか？" } do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <div class="post__show__title">
+      基本情報
+    </div>
+    <table class="table__2">
+      <tbody>
+        <tr>
+          <th class="table__col5">教科名</th>
+          <td class="table__col6"><%= @post.subject %></td>
+        </tr>
+        <tr>
+          <th class="table__col5">科目名</th>
+          <td class="table__col6"><%= @post.course%></td>
+        </tr>
+        <tr>
+          <th class="table__col5">単元名</th>
+          <td class="table__col6"><%= @post.unit %></td>
+        </tr>
+        <tr>
+          <th class="table__col5">教材名</th>
+          <td class="table__col6"><%= @post.teaching_materials %></td>
+        </tr>
+        <tr>
+          <th class="table__col5">タグ</th>
+          <td class="table__col6"><%= @post.tags&.first&.tag_name %></td>
         </tr>
       </tbody>
     </table>
-
     <div class="post-title">
       <div class="post__detail">
         <div class="detail__title">コメント</div>
@@ -118,11 +166,42 @@
               <%= f.text_area :content, placeholder:"コメントを入力してください", class:"input-class"%>
               <div class="actions">
                 <%= f.submit "送信する", class: :form__btn  %>
+    <div class="post__show__title">
+      授業の展開
+    </div>
+    <table class="table__3">
+      <tbody>
+        <th class="table__col7">導入(<%= @post.introduction_time %>)分</th>
+          <td class="table__col8"><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th class="table__col9">展開(<%= @post.development_time %>)分</th>
+          <td class="table__col10"><%= @post.development %></td>
+        </tr>
+        <tr>
+          <th class="table__col7">まとめ(<%= @post.summary_time %>)分</th>
+          <td class="table__col8"><%= @post.summary %></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <div class="post__show__title">
+      板書案・スライド・添付資料
+    </div>
+
+    <div class="post_show_image">
+      <% if @post.images.present? %>
+        <div class="post__image">
+          <%= image_tag @post.images[0]%>
+          <div class="other-images">
+            <% @post.images[1..-1].each do |image| %>
+              <div class="other-image">
+                <%= image_tag image %>
               </div>
-            <% end %>
-          <% else %>
-              <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-          <% end %> 
+            <%end%>
+          </div>
         </div>
 
         <div id="comments">
@@ -152,7 +231,59 @@
               </div>
             <% end %>
           </div>
+        <%else%>
+        <div class="post__image">
+          <%= link_to image_tag 'no-post.png' %>
         </div>
+      <% end %>
+    </div>
+    <div class="post__show__title">
+      コメント
+    </div>
+    <div class="post__comments">
+      <div class="comment-form">
+        <% if user_signed_in? %>
+          <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
+            <div class="field">
+              <%= f.text_field :content, id:"comment_content", class:"input-comment", placeholder:"コメントを入力してください"%>
+            </div>
+            <div class="actions">
+              <%= f.submit "送信する", class: :form__btn  %>
+            </div>
+          <% end %>
+        <% else %>
+            <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+        <% end %> 
+      </div>
+
+      <div id="comments">
+        <div class="h4">＜コメント一覧＞</div>
+        <ul class="comments_lists">
+          <% @post.comments.each do |comment| %>
+            <div class="comment">
+              <li class="comment_list">
+              <div class="follow-header">
+                <div class="user-image">
+                  <% if comment.user.image? %>
+                    <%= image_tag comment.user.image.url %>
+                  <% else %>
+                    <%= image_tag("/images/no-image.png") %>
+                  <% end %>
+                </div>
+                <div class="follow-right">
+                  <div class="user-nickname">
+                    <%= comment.user.nickname %>
+                  </div>
+                  <div class="user-introduce">
+                    <%= comment.content %>
+                  </div>
+                </div>
+              </div>
+
+              </li>
+            </div>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>

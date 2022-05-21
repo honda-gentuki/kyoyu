@@ -1,5 +1,6 @@
 #previews {
   display: flex;
+  flex-direction: column;
 }
 
 .preview{
@@ -11,4 +12,5 @@
   border: solid 1px;
   cursor: pointer;
   margin-bottom: 5px;
+  width: 45%;
 }

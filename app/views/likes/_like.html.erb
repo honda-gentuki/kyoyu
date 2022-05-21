@@ -1,13 +1,25 @@
 <% if user_signed_in? %>
-    <% if current_user.already_liked?(post) %>
-      <%= link_to(post_likes_path(post), method: :delete, remote: true, id: :"like-button-#{post.id}") do %>
-          <i class="fa-lg fas fa-heart icon-btn liked"></i>
-          <%= post.likes.count %> いいね
-      <% end %>
-    <% else %>
-      <%= link_to(post_likes_path(post), method: :post, remote: true, id: :"like-button-#{post.id}") do %>
-          <i class="fa-lg fas fa-heart icon-btn not-like"></i>
-          <%= post.likes.count %> いいね
-      <% end %>
+  <% if current_user.already_liked?(post) %>
+    <%= link_to(post_likes_path(post), method: :delete, remote: true, id: :"like-button-#{post.id}") do %>
+      <div class="flex-likes">
+        <div class= likes-icon>
+          <i class="bi bi-suit-heart-fill"></i>
+        </div>
+        <div class="likes-count">
+          <%= post.likes.count %>
+        </div>
+      </div>
     <% end %>
+<% else %>
+    <%= link_to(post_likes_path(post), method: :post, remote: true, id: :"like-button-#{post.id}") do %>
+      <div class="flex-likes">
+        <div class= likes-icon>
+          <i class="bi bi-suit-heart"></i>
+        </div>
+        <div class="likes-count">
+          <%= post.likes.count %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

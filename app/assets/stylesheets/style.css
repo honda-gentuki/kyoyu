@@ -17,7 +17,6 @@
   padding: 0.4em 1.6em;
   font-size: 0.8em;
   color: #fff;
-  text-decoration: none;
   user-select: none;
   background-color: #2988BC;
   border: 1px #2988BC solid;
@@ -65,35 +64,18 @@
   padding: 30px 0 30px 100px;
 }
 
-.input-search {
-  width: 500px;
-  margin-top: 5px;
-  height: 48px;
-  padding: 10px 16px 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 16px;
-  resize: none;
-}
-
-.search{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-
-
 .greeting{
   padding-top: 48px;
   margin-bottom: 20px;
-
 }
 
-.greeting__link{
-  text-decoration: none;
+.greeting a{
+  color: black;
+}
+
+.greeting a:hover{
+  color: black;
+  opacity: 0.7;
 }
 
 .page-heading {
@@ -108,17 +90,19 @@
 .card__wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   min-height: calc(100vh - 161px);
 }
 
 .card__body{
   background-color: #fff;
-  border-radius: 15px;
-  height: 400px;
+  max-height: 450px;
   width: auto;
-  box-shadow:  5px 5px 5px #ccc;
+  box-shadow: 5px 5px 5px #ccc;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -136,8 +120,16 @@
   margin-right: 30px;
 }
 
+.user-image img:hover{
+  opacity: 0.5;
+}
+
 .user__name{
-  margin-right: 80px;
+  margin-right: 40px;
+}
+
+.user__name a:hover{
+  opacity: 0.5;
 }
 
 .card__img {
@@ -148,11 +140,32 @@
   border-bottom: 1px solid #ddd;
 }
 
+.card-img:hover{
+  opacity: 0.5;
+}
+
 .card__title {
-  display: flex;
   font-size: 20px;
   font-weight: bold;
-  text-decoration: none;
+}
+
+.card__title{
+  color: black;
+}
+
+.card__title a:hover{
+  color: black;
+  opacity: 0.5;
+}
+
+.card_sub_title {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+}
+
+.card_sub_title a:hover{
+  opacity: 0.5;
 }
 
 .card__summary {
@@ -172,11 +185,10 @@
   justify-content: space-around;
 }
 
-.card__footer{
+.card__name{
   display: flex;
   align-items: center;
   padding: 0 0 10px 15px;
-  margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -184,31 +196,149 @@
   margin-right: 16px;
 }
 
+.bi-gear{
+  color: black;
+}
+
+.bi-gear:hover{
+  opacity: 0.5;
+}
+
+.card-footer{
+  display: flex;
+  align-items: center;
+}
+
+.paginate{
+  padding-bottom: 24px;
+}
+
+ /* いいね周り */
+.flex-likes{
+  display: flex;
+}
+
 .like-btn{
   margin: 20px;
 }
 
-/* 詳細ページ */
-
-.post__heading{
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
+.likes-icon{
+  margin-right: 20px;
 }
 
-.post__user{
-  display: block;
+.likes-count{
+  color: #536371;
+  margin-right: 30px;
+}
+
+.bi-suit-heart-fill{
+  color: red;
+}
+
+.bi-suit-heart{
+  color: red;
+}
+
+/* コメント周り */
+.chat-btn{
+  display: flex;
+}
+
+.chat-icon{
+  margin-right: 20px;
+}
+
+.chat-count{
+  color: #536371;
+}
+
+.bi-chat-dots{
+  color: black;
+}
+
+.bi-chat-dots:hover{
+  opacity: 0.5;
+}
+
+.chat-count:hover{
+  opacity: 0.5;
+}
+
+
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-comment {
+  width: 70%;
+  margin-top: 5px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
   font-size: 16px;
-  color: #999;
+  resize: none;
+}
+
+/* 詳細ページ */
+.show__header {
+  display: block;
+  font-size: 20px;
   text-align: center;
-  text-decoration: underline;
+  border-bottom: 1px solid #ddd;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.show__user-image img{ 
+  height: 57px;
+  width: 57px;
+  object-fit: cover;
+  border-radius: 150px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.user-image img:hover{
+  opacity: 0.5;
+}
+
+.show__user__name{
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.show__user__name a:hover{
+  opacity: 0.5;
+}
+
+.post__show__title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 10;
+  margin: 10px 0;
 }
 
 .post__image{
   width: 100%;
-  margin: 0 auto;
-  border-top: 1px solid #ddd;
+  margin: 0 auto
+  border-top: 1px sol #ddd;
+  border-bottom: 1px solid #ddd
   border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+}
+
+.post__image img{
+  height: 400px;
+  width: auto;
+  margin-bottom: 15px
 }
 
 .post__detail{
@@ -227,7 +357,6 @@
   padding: 0.4em 1.6em;
   font-size: 0.4em;
   color: #999;
-  text-decoration: none;
   user-select: none;
   border: 1px #999 solid;
   border-radius: 3px;
@@ -242,12 +371,17 @@
 
 /* コメント周り */
 
-.post__comments{
+.post__comments
   background-color: #f6f6f6;
   padding: 30px;
   width: 90%;
   margin: 0 auto;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd
+  padding: 20px 0 40px 0 ;
+}
+
+.h4{
+  margin-left: 50px
 }
 
 .comments_lists{
@@ -264,7 +398,6 @@
   color: #999;
   text-decoration: underline;
 }
-
 .comment-main{
   margin: 24px 0 24px 0;
 }
@@ -294,7 +427,80 @@
   justify-content: center;
   align-items: center;
   margin: 20px 0 10px 0;
-  font-size: 20px;
+  font-size: 20px
+.table__2{
+  border-collapse: collapse;
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.table__col5{
+  text-align: left;
+  font-weight: bold;
+  background: #fafafa;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 20%;
+  padding: 8px 8px 8px 15px;
+  height: 20%;
+}
+
+.table__col6{
+  text-align: left;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+  width: 80%;
+  padding: 16px 15px;
+}
+
+.table__3{
+  border-collapse: collapse;
+  width: 100%;
+  height: 1000px;
+  margin: 0 auto;
+}
+
+.table__col7{
+  text-align: left;
+  font-weight: bold;
+  background: #fafafa;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 20%;
+  padding: 8px 8px 8px 15px;
+  height: 20%;
+}
+
+.table__col8{
+  text-align: left;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+  width: 80%;
+  padding: 16px 15px;
+}
+
+.table__col9{
+  text-align: left;
+  font-weight: bold;
+  background: #fafafa;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 20%;
+  padding: 8px 8px 8px 15px;
+  height: 60%;
+}
+
+.table__col10{
+  text-align: left;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+  width: 80%;
+  padding: 16px 15px;
+  height: 60%
 }
 
 /* ユーザーページ */
@@ -401,11 +607,6 @@
   .table{
     width: 100%;
   }
-}
-
- /* いいねボタン */
-#like-button{
-  text-decoration: none;
 }
 
 /* 新規登録・ユーザー情報編集*/
@@ -544,6 +745,7 @@
 
 .user-profile{
   display: flex;
+  margin-bottom: 36px;
 }
 
 .profile-card{
@@ -559,7 +761,14 @@
   border-bottom: 1px solid #ddd;
   background: #f2f2f2;
   border-radius: 5px 5px 0 0 ;
+  display: flex
+  flex-direction: column;
+}
+
+.card-header span{
   display: flex;
+  justify-content: flex-end;
+  font-size: 15px
 }
 
 .card-image img{
@@ -582,6 +791,12 @@
   width: 100vw;
   margin-left: 30px;
 }
+.table{
+  height: 430px;
+}
+
+.table tbody{
+  box-shadow: 15px 20px 20px #ccc;
 
 .flex-row{
   display: flex;
@@ -605,7 +820,6 @@
 .info-nickname{
   margin-bottom: 15px;
 }
-
 /* 投稿詳細ページ */
 .post-title{
   display: flex;
@@ -728,4 +942,154 @@
 
 .trush-icon{
   margin-left: 15px;
+
+
+/* main */
+.title-contents {
+  width: 100vw;
+  background-image: url('school.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 15vw;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
+
+.service-title {
+  font-size: 8vh;
+}
+
+.service-explain {
+  font-size: 2.5vh;
+  line-height: 40px;
+}
+
+
+.select-reason-contents {
+  padding: 5vh 15vw;
+}
+
+.select-reason-contents>.title {
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  position: relative;
+}
+
+.select-reason-contents>.title::after {
+  content: '';
+  width: 70px;
+  height: 4px;
+  background-color: #3ccace;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.reason-lists {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.reason-lists>.list {
+  width: 33vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.list-pict {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.reason-list-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 60px;
+  background-color: #3ccace;
+  color: #fff;
+}
+
+.reason-list-text {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 50px;
+}
+
+.reason-list-blue-text {
+  color: #3ccace;
+}
+
+.reason-list-description {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* 特徴 */
+.feature-contents {
+  padding: 5vh 15vw;
+  background-color: #f2f2f2;
+}
+
+.feature-contents>.title {
+  text-align: center;
+  font-size: 3.5vh;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  position: relative;
+}
+
+.feature-contents>.title::after {
+  content: '';
+  width: 70px;
+  height: 4px;
+  background-color: #3ccace;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.feature-lists {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.feature-lists img{
+  height: 200px;
+}
+
+.feature-lists>.list {
+  width: 33vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-list-text {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 50px;
+}
+
+.feature-list-description {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
