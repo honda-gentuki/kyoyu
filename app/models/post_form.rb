@@ -2,9 +2,10 @@ class PostForm
   include ActiveModel::Model
 
   attr_accessor(
-    :subject, :course, :unit, :introduction, :introduction_time, :development, :development_time, :summary, :summary_time, :teaching_materials, :images,
-    :id, :user_id, :created_at, :updated_at, :datetime,
-    :tag_name
+    :id, :subject, :course, :unit, :introduction, :introduction_time, :development, :development_time, :summary, :summary_time, :teaching_materials,
+    :user_id, :created_at, :updated_at, :images,
+    :id, :tag_name, :created_at, :updated_at,
+    :id, :name, :record_type, :record_id, :blob_id, :created_at
   )
 
   with_options presence: true do
@@ -26,11 +27,11 @@ class PostForm
   end
 
   def save
-    Post.create(subject: subject, course: course, unit: unit, introduction: introduction, introduction_time: introduction_time,
+    post = Post.create(subject: subject, course: course, unit: unit, introduction: introduction, introduction_time: introduction_time,
                 development: development, development_time: development_time, summary: summary, summary_time: summary_time, teaching_materials: teaching_materials, images: images, user_id: user_id)
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
-    PostTag.create(post_id: post.id, tag_id: tag.id)
+    post = PostTag.create(post_id: post.id, tag_id: tag.id)
   end
 
   def update(params, post)
@@ -39,6 +40,6 @@ class PostForm
     tag = Tag.where(tag_name: tag_name).first_or_initialize if tag_name.present?
     tag.save if tag_name.present?
     post.update(params)
-    PostTag.create(post_id: post.id, tag_id: tag.id) if tag_name.present?
+    post = PostTag.create(post_id: post.id, tag_id: tag.id) if tag_name.present?
   end
 end
