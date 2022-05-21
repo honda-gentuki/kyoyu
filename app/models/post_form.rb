@@ -28,7 +28,7 @@ class PostForm
 
   def save
     post = Post.create(subject: subject, course: course, unit: unit, introduction: introduction, introduction_time: introduction_time,
-                development: development, development_time: development_time, summary: summary, summary_time: summary_time, teaching_materials: teaching_materials, images: images, user_id: user_id)
+                       development: development, development_time: development_time, summary: summary, summary_time: summary_time, teaching_materials: teaching_materials, images: images, user_id: user_id)
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     post = PostTag.create(post_id: post.id, tag_id: tag.id)
