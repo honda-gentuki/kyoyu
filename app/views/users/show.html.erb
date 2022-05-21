@@ -86,10 +86,6 @@
       <h2 class="page-heading">
         <%= "#{@user.nickname}先生の投稿"%>
       </h2>
-
-      <h2 class="page-heading">
-        <%= "#{@user.nickname}先生がいいねした投稿"%>
-      </h2>
       <div class="user__card">
         <%= render partial: 'posts/post', collection: @post %>
       </div>
