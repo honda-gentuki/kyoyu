@@ -107,31 +107,7 @@
       <div id="comments">
         <div class="h4">＜コメント一覧＞</div>
           <ul class="comments_lists">
-            <% @post.comments.each do |comment| %>
-              <div class="comment">
-                <li class="comment_list">
-                  <div class="follow-header">
-                    <div class="user-image">
-                    <%= link_to user_path(comment.user_id) do%>
-                      <% if comment.user.image? %>
-                        <%= image_tag comment.user.image.url %>
-                      <% else %>
-                        <%= image_tag("/images/no-image.png") %>
-                      <% end %>
-                    <% end %>
-                    </div>
-                    <div class="follow-right">
-                      <div class="user-nickname">
-                        <%= comment.user.nickname %>
-                      </div>
-                      <div class="user-introduce">
-                        <%= comment.content %>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </div>
-            <% end %>
+            <%= render "comment" %>
           </ul>
         </div>
       </div>

@@ -18,25 +18,21 @@ if(location.pathname.match(/\/posts\/\d/)){
     received(data) {
       const html = `
       <div class="comment">
-        <li class="comment_list">
+        <div class="comment_list">
           <div class="follow-header">
             <div class="user-image">
-              if (date.comment.user.image?){
-                <a class="comment_user" href="/users/user.id"><img src="data.comment.user.image.url"></a>
-              }else{
-                <a class="comment_user" href="/users/user.id"><img src="/images/no-image.png"></a>
-              }
+              <a class="comment_user" href="/users/user.id"><img src="/images/send.png"></a>
             </div>
             <div class="follow-right">
               <div class="user-nickname">
-                ${data.comment.user.nickname}
+                ${data.user.nickname}
               </div>
               <div class="user-introduce">
-                ${data.comment.content}
+                ${data.content}
               </div>
             </div>
           </div>
-        </li>
+        </div>
       </div>`
       const comments = document.getElementById("comments")
       comments.insertAdjacentHTML('beforeend', html)
