@@ -80,3 +80,11 @@ a{
 .notification-main a{
   color: black;
 }
+
+.card-footer a{
+  color: black;
+}
+
+.card-footer a:hover{
+  opacity: 0.5;
+}

@@ -1,18 +1,18 @@
-$('.message').append("<div class="bms_message bms_right">
-                <div class="bms_message_box">
-                    <div class="bms_message_content">
-                        <div class="bms_message_text">
-                          <p style="text-align: left;">
-                            <%= chat.message %>
-                          </p>
-                        </div>
-                    </div>
+/*.messageを部分更新。appendメソッドで要素を追加 */
+$('.message').append(`
+                <div class="bms_message bms_right">
+                  <div class="bms_message_box">
+                      <div class="bms_message_content">
+                          <div class="bms_message_text">
+                            <div style="text-align: left"><%= @chat.message %></div>
+                          </div>
+                      </div>
+                  </div>
+                <div class="already__read">
+                  <%= @read ? '既読' : '未読' %>
                 </div>
-              <div class="already__read">
-                <%= @read ? '既読' : '未読' %>
               </div>
-            </div>
-            <div class="bms_clear"></div>");
+              <div class="bms_clear"></div>`);
 
-
-$('input[type=hidden]').val("")
+/*チャット投稿後、フォームの値に前回の投稿内容が残らないようにする */
+$('input[type=text]').val("")

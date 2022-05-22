@@ -41,40 +41,38 @@
       </div>
       <!-- タイムライン部分③ -->
       <div id="bms_messages">
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
-          <!--メッセージ２（右側）-->
-            <div class="bms_message bms_right">
-                <div class="bms_message_box">
-                    <div class="bms_message_content">
-                        <div class="bms_message_text">
-                          <p style="text-align: left;">
-                            <%= chat.message %>
-                          </p>
-                        </div>
-                    </div>
-                </div>
-              <div class="already__read">
-                <%= @read ? '既読' : '未読' %>
-              </div>
-            </div>
-            <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
-          <% else %>
-            <!--メッセージ１（左側）-->
-            <div class="bms_message bms_left">
-                <div class="bms_message_box">
-                    <div class="bms_message_content">
-                        <div class="bms_message_text">
-                          <div style="text-align: left;">
-                            <%= chat.message %>
+        <div class="message">
+          <% @chats.each do |chat| %>
+            <% if chat.user_id == current_user.id %>
+            <!--メッセージ1（右側）-->
+              <div class="bms_message bms_right">
+                  <div class="bms_message_box">
+                      <div class="bms_message_content">
+                          <div class="bms_message_text">
+                            <div style="text-align: left"><%= chat.message %></div>
                           </div>
-                        </div>
-                    </div>
+                      </div>
+                  </div>
+                <div class="already__read">
+                  <%= @read ? '既読' : '未読' %>
                 </div>
-            </div>
-            <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
+              </div>
+              <div class="bms_clear"></div>
+            <% else %>
+              <!--メッセージ2（左側）-->
+              <div class="bms_message bms_left">
+                  <div class="bms_message_box">
+                      <div class="bms_message_content">
+                          <div class="bms_message_text">
+                            <div style="text-align: left;"><%= chat.message %></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="bms_clear"></div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
     <!-- テキストボックス、送信ボタン④ -->
