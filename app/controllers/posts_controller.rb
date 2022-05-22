@@ -5,13 +5,8 @@ class PostsController < ApplicationController
 
   def index
     @users = User.all
-    @tags = Tag.all
-    @tags = Tag.where('tag_name LIKE ?', "%#{params[:search]}%") if params[:search].present?
-    @post = Post.all.order('created_at DESC').page(params[:page]).reverse_order
-    @q = Tag.ransack(params[:q])
-    @tags = @q.result(distinct: true)
-    @post = @post.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @posts = Post.all.order('created_at DESC').page(params[:page])
+    @posts = @posts.where('unit LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def new
@@ -56,13 +51,6 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to root_path
-  end
-
-  def search
-    return nil if params[:keyword] == ''
-
-    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
-    render json: { keyword: tag }
   end
 
   private
