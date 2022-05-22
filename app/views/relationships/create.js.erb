@@ -1,1 +1,2 @@
 $("#follow_form").html("<%= j(render("users/unfollow")) %>");
+$(".h5").html('フォロワー<%= @user.followers.count %>人');

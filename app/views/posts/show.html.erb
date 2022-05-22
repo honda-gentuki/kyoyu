@@ -4,7 +4,7 @@
     <div class="card__header">
       <div class="user-image">
         <% if @post.user.image? %>
-          <%= image_tag @post.user.image.url %>
+          <%= link_to image_tag @post.user.image.url %>
         <% else %>
           <%= image_tag("/images/no-image.png") %>
         <% end %>
@@ -85,13 +85,12 @@
       <% if @post.user.image? %>
         <% if @post.images.present? %>
           <div class="post__image">
-            <%= image_tag @post.images[0]%>
-            <div class="other-images">
-              <% @post.images[1..-1].each do |image| %>
-                <div class="other-image">
+            <div class="previews">
+              <div class="slider">
+                <% @post.images[0..-1].each do |image| %>
                   <%= image_tag image %>
-                </div>
-              <%end%>
+                <%end%>
+              </div>
             </div>
           </div>
         <% end %>
