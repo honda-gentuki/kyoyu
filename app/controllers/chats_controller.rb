@@ -1,4 +1,11 @@
 class ChatsController < ApplicationController
+before_action :authenticate_user!
+
+  def index
+    @users = User.all.includes(:chats)
+    @users = @users.joins(:chats).order("chats.created_at DESC")
+  end
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.room_users.pluck(:room_id)
@@ -13,7 +20,7 @@ class ChatsController < ApplicationController
       @room = room_users.room
     end
 
-    @chats = @room.chats
+    @chats = @room.chats.includes(:user).order(:id)
     @chat = Chat.new(room_id: @room.id)
     @read = Read.update(complete: true) if Read.create(chat_id: @chat.id, user_id: current_user.id)
   end

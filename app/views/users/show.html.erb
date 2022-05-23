@@ -10,8 +10,8 @@
         </div>
         <div class="action">
           <div class="actions">
-            <% if current_user != @user %>
-              <%= link_to "チャット", chat_path(@user.id), class: :form__btn%>
+            <% if current_user != @user.id %>
+              <%= link_to "チャット", chats_path(@user.id), class: :form__btn%>
             <% end %> 
           </div>
           <div class="actions">

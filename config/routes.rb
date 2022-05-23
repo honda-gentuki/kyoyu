@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root 'posts#index'
   resources :posts do
@@ -11,6 +12,6 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :chats, only: [:show, :create]
+  resources :chats, only: [:index, :show, :create]
   resources :notifications, only: :index
 end
