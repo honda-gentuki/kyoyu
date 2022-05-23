@@ -16,7 +16,7 @@
       </div>
       <% if user_signed_in? && current_user.id == post.user_id %>
         <div class="post-edit">
-          <%= link_to edit_post_path(current_user.id) do %>
+          <%= link_to edit_post_path(urrent_user.id) do %>
             <i class="bi bi-gear"></i>
           <% end %> 
         </div>
