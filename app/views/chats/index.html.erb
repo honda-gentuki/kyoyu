@@ -7,21 +7,23 @@
     </div>
     <div>
       <% @users.each do |user| %>
-        <%= link_to chat_path(user.id) do %>
-        <div class="follow-header">
-          <div class="user-image">
-            <% if user.image? %>
-              <%= image_tag user.image.url %>
-            <% else %>
-              <%= image_tag("/images/no-image.png") %>
-            <% end %>
-          </div>
-          <div class="follow-right">
-            <div class="user-nickname">
-            <%= user.nickname %>
+        <% if user_signed_in? && user.id != current_user.id %>
+          <%= link_to chat_path(user.id) do %>
+          <div class="follow-header">
+            <div class="user-image">
+              <% if user.image? %>
+                <%= image_tag user.image.url %>
+              <% else %>
+                <%= image_tag("/images/no-image.png") %>
+              <% end %>
+            </div>
+            <div class="follow-right">
+              <div class="user-nickname">
+              <%= user.nickname %>
+              </div>
             </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
