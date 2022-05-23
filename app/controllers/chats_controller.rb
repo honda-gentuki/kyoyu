@@ -2,8 +2,8 @@ class ChatsController < ApplicationController
 before_action :authenticate_user!
 
   def index
-    @users = User.all
-    @chats = Chat.all
+    @users = User.all.includes(:chats)
+    @users = @users.joins(:chats).order("chats.created_at DESC")
   end
 
   def show
