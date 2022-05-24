@@ -6,18 +6,23 @@ module NotificationsHelper
     @visiter_comment = notification.comment_id
     # notification.actionがfollowかlikeかcommentか
     case notification.action
-    when 'follow'
-      tag.a(notification.visiter.nickname, href: user_path(@visiter), style: 'font-weight: bold;') + 'があなたをフォローしました'
-    when 'like'
-      tag.a(notification.visiter.nickname, href: user_path(@visiter),
-                                           style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id),
-                                                                                                style: 'font-weight: bold;') + 'にいいねしました'
-    when 'comment'
-      @comment = Comment.find_by(id: @visiter_comment)&.content
-      tag.a(@visiter.nickname, href: user_path(@visiter),
-                               style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id),
+      when 'follow'
+        tag.a(notification.visiter.nickname, href: user_path(@visiter), style: 'font-weight: bold;') + 'があなたをフォローしました'
+      when 'like'
+        tag.a(notification.visiter.nickname, href: user_path(@visiter),
+                                            style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id),
+                                                                                                  style: 'font-weight: bold;') + 'にいいねしました'
+      when 'comment'
+        @comment = Comment.find_by(id: @visiter_comment)&.content
+        tag.a(@visiter.nickname, href: user_path(@visiter),
+                                style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id),
+                                                                                      style: 'font-weight: bold;') + 'にコメントしました'
+      when 'chat'
+        @chat = Chat.find_by(id: @visiter_chat)&.message
+        tag.a(@visiter.nickname, href: chat_path(@visiter),
+                               style: 'font-weight: bold;') + 'が' + tag.a('あなたの投稿', href: chat_path(notification.chat_id),
                                                                                     style: 'font-weight: bold;') + 'にコメントしました'
-    end
+      end
   end
 
   def unchecked_notifications
