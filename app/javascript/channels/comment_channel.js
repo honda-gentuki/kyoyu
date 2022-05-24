@@ -21,7 +21,7 @@ if(location.pathname.match(/\/posts\/\d/)){
         <div class="comment_list">
           <div class="follow-header">
             <div class="user-image">
-              <a class="comment_user" href="/users/user.id"><img src="/images/send.png"></a>
+              <a class="comment_user" href="/users/user.id"><img src="${data.user.image.url}"></a>
             </div>
             <div class="follow-right">
               <div class="user-nickname">
