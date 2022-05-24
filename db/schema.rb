@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_05_14_124408) do
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.text "message"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
